@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kairòs - Studio Medico & Dentistico</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --porcelain: #F5F5F7;
+            --rich-black: #08080A;
+            --accent: #4ECDC4;
+            --accent-glow: rgba(78, 205, 196, 0.3);
+            --purple: #8A2BE2;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--rich-black);
+            color: white;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9000;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            mix-blend-mode: overlay;
+        }
+
+        #main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(8, 8, 10, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown>span {
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-dropdown:hover>span {
+            color: white;
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding-top: 14px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+            z-index: 200;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .nav-dropdown-inner {
+            background: rgba(15, 15, 18, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 8px;
+            min-width: 260px;
+        }
+
+        .nav-dropdown-inner a {
+            display: block;
+            padding: 12px 16px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .nav-dropdown-inner a:hover {
+            background: rgba(78, 205, 196, 0.15) !important;
+            color: white !important;
+        }
+
+        .nav-cta {
+            padding: 10px 24px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: white;
+            color: black;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 140px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: 100px;
+            background: rgba(78, 205, 196, 0.08);
+            border: 1px solid rgba(78, 205, 196, 0.2);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 32px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hero-title {
+            font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            max-width: 900px;
+        }
+
+        .hero-title .accent {
+            color: var(--accent);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            color: rgba(255, 255, 255, 0.45);
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-top: 28px;
+        }
+
+        .hero-subtitle strong {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .hero-word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .split-section {
+            padding: 120px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .split-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .split-header h2 {
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .split-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 1100px;
+            margin: 0 auto;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .split-side {
+            padding: 60px 48px;
+            position: relative;
+        }
+
+        .split-without {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .split-with {
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.06), rgba(78, 205, 196, 0.02));
+            border-left: 1px solid rgba(78, 205, 196, 0.15);
+        }
+
+        .split-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .split-label .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .split-without .dot {
+            background: #555;
+        }
+
+        .split-with .dot {
+            background: var(--accent);
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        .split-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .split-with .split-item {
+            transform: translateX(20px);
+        }
+
+        .split-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .split-text {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .split-with .split-text {
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .solutions {
+            padding: 120px 24px;
+            background: linear-gradient(180deg, var(--rich-black) 0%, #0f0f12 100%);
+        }
+
+        .solutions-header {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+
+        .solutions-header h2 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .solutions-header p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 1rem;
+            font-weight: 300;
+            margin-top: 12px;
+        }
+
+        .solution-card {
+            max-width: 900px;
+            margin: 0 auto 48px;
+            padding: 48px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: border-color 0.4s, box-shadow 0.4s;
+        }
+
+        .solution-card:hover {
+            border-color: rgba(78, 205, 196, 0.2);
+            box-shadow: 0 0 60px -20px var(--accent-glow);
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .solution-card:hover::before {
+            opacity: 1;
+        }
+
+        .solution-card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px var(--accent-glow));
+        }
+
+        .solution-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .solution-card h3 span {
+            color: var(--accent);
+        }
+
+        .solution-card p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 300;
+        }
+
+        .solution-card strong {
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: 500;
+        }
+
+        .telegram-section {
+            padding: 120px 24px;
+            position: relative;
+        }
+
+        .telegram-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .telegram-header h2 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .telegram-header p {
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 12px;
+            font-weight: 300;
+        }
+
+        .telegram-phone {
+            max-width: 420px;
+            margin: 0 auto;
+            background: #1B2836;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5);
+        }
+
+        .telegram-topbar {
+            background: #1E2C3A;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .telegram-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #2EB8AE);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .telegram-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .telegram-status {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .telegram-chat {
+            padding: 20px;
+            min-height: 420px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tg-msg {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 16px 16px 16px 4px;
+            background: #2B3E50;
+            font-size: 0.85rem;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.88);
+            position: relative;
+            opacity: 0;
+            transform: translateY(15px) scale(0.95);
+        }
+
+        .tg-msg .tg-time {
+            display: block;
+            text-align: right;
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.25);
+            margin-top: 6px;
+        }
+
+        .tg-msg .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .tg-msg .alert {
+            color: #FF6B6B;
+            font-weight: 600;
+        }
+
+        .cost-section {
+            padding: 100px 24px;
+            text-align: center;
+        }
+
+        .cost-versus {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .cost-item {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .cost-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: 8px;
+        }
+
+        .cost-value {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+        }
+
+        .cost-old {
+            color: rgba(255, 255, 255, 0.15);
+            text-decoration: line-through;
+        }
+
+        .cost-new {
+            color: var(--accent);
+        }
+
+        .cost-arrow {
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.15);
+            opacity: 0;
+        }
+
+        .cost-detail {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.3);
+            margin-top: 4px;
+            font-weight: 400;
+        }
+
+        .value-section {
+            padding: 120px 24px;
+            background: linear-gradient(180deg, #0f0f12 0%, var(--rich-black) 100%);
+        }
+
+        .value-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .value-title {
+            font-size: clamp(2rem, 4.5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 32px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .value-title .accent {
+            color: var(--accent);
+        }
+
+        .value-text {
+            font-size: clamp(1rem, 1.6vw, 1.15rem);
+            color: rgba(255, 255, 255, 0.45);
+            font-weight: 300;
+            line-height: 1.9;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .value-text strong {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        .cta-section {
+            padding: 120px 24px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .cta-title .accent {
+            color: var(--accent);
+        }
+
+        .cta-subtitle {
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 1rem;
+            font-weight: 300;
+            margin-bottom: 48px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 22px 48px;
+            border-radius: 100px;
+            background: linear-gradient(135deg, var(--accent), #2EB8AE);
+            color: black;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 20px 50px -10px var(--accent-glow);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 30px 60px -10px var(--accent-glow);
+        }
+
+        .cta-button svg {
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover svg {
+            transform: translateX(4px);
+        }
+
+        .page-footer {
+            padding: 32px 24px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .split-container {
+                grid-template-columns: 1fr;
+            }
+
+            .split-with {
+                border-left: none;
+                border-top: 1px solid rgba(78, 205, 196, 0.15);
+            }
+
+            .split-side {
+                padding: 40px 28px;
+            }
+
+            .solution-card {
+                padding: 32px 24px;
+            }
+
+            .cost-versus {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero::before {
+                width: 400px;
+                height: 400px;
+            }
+        }
+
+        /* ═══ MOBILE HAMBURGER ═══ */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            z-index: 60;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 90px 24px 32px;
+            background: rgba(8, 8, 10, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 45;
+            flex-direction: column;
+            gap: 4px;
+            transform: translateY(-100%);
+            transition: transform 0.35s ease;
+        }
+
+        .mobile-menu.open {
+            transform: translateY(0);
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 14px 16px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 12px;
+            transition: background 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .mobile-menu .mobile-menu-cta {
+            display: block;
+            text-align: center;
+            margin-top: 12px;
+            padding: 16px;
+            background: white;
+            color: black;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width:768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="noise-overlay"></div>
+
+    <nav id="main-nav">
+        <a href="index.html" class="nav-logo">Kairòs</a>
+        <div class="nav-links">
+            <a href="chi-siamo.html">Chi siamo</a>
+            <div class="nav-dropdown">
+                <span>Che attività hai? ▾</span>
+                <div class="nav-dropdown-menu">
+                    <div class="nav-dropdown-inner">
+                        <a href="centro-estetico.html">Centro Estetico & Parrucchiere</a>
+                        <a href="studio-medico.html" style="color:var(--accent);">Studio Medico & Dentistico</a>
+                        <a href="ristorazione.html">Ristorazione & Food</a>
+                    </div>
+                </div>
+            </div>
+            <a href="integrazioni.html">App</a>
+        </div>
+        <div class="nav-actions" style="display: flex; align-items: center; gap: 16px;">
+            <a href="index.html#prenota" class="nav-cta" style="padding: 10px 20px; font-size: 0.85rem;">Prenota
+                Call</a>
+            <div class="hamburger" id="hamburger"
+                onclick="this.classList.toggle('open'); document.getElementById('mobile-menu').classList.toggle('open');">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="chi-siamo.html">Chi siamo</a>
+        <div style="padding-left:12px; display:flex; flex-direction:column; gap:2px;">
+            <span
+                style="padding:10px 16px 6px; color:#666; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em;">Che
+                attività hai?</span>
+            <a href="centro-estetico.html">Centro Estetico & Parrucchiere</a>
+            <a href="studio-medico.html" style="color:var(--accent); font-weight:700;">Studio Medico & Dentistico</a>
+            <a href="ristorazione.html">Ristorazione & Food</a>
+        </div>
+        <a href="integrazioni.html">App</a>
+        <a href="index.html#prenota" class="mobile-menu-cta"
+            onclick="document.getElementById('hamburger').classList.remove('open'); document.getElementById('mobile-menu').classList.remove('open');">Prenota
+            Call →</a>
+    </div>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-badge"><span>✦</span> Per Studi Medici & Dentistici</div>
+            <h1 class="hero-title" id="hero-title">
+                Il paziente non si è presentato e tu hai perso <span class="accent">un'ora di lavoro.</span> Quanto ti
+                costa una poltrona vuota?
+            </h1>
+            <p class="hero-subtitle" style="opacity:0; transform:translateY(20px);">
+                Una segretaria full-time ti costa circa <strong>25.000€ l'anno</strong> (CCNL). Una part-time circa
+                17.000€.
+                Kairòs ti offre una copertura H24, 7 giorni su 7, a un costo di <strong>oltre 25 volte
+                    inferiore.</strong>
+            </p>
+            <div style="margin-top: 48px; opacity:0; transform:translateY(20px);" class="scroll-hint">
+                <svg width="24" height="40" viewBox="0 0 24 40" fill="none" stroke="rgba(78,205,196,0.4)"
+                    stroke-width="1.5" stroke-linecap="round" class="animate-bounce">
+                    <rect x="8" y="1" width="8" height="14" rx="4" />
+                    <line x1="12" y1="18" x2="12" y2="22" />
+                    <path d="M7 30 L12 36 L17 30" />
+                </svg>
+            </div>
+        </section>
+
+        <!-- SENZA vs CON -->
+        <section class="split-section">
+            <div class="split-header">
+                <h2 style="opacity:0; transform:translateY(20px);">Una giornata tipo: <span
+                        style="color: var(--accent)">senza e con Kairòs</span></h2>
+            </div>
+            <div class="split-container">
+                <div class="split-side split-without">
+                    <div class="split-label"><span class="dot"></span> Senza Kairòs</div>
+                    <div class="split-item"><span class="split-icon">📵</span>
+                        <div class="split-text">Paziente chiama alle 22 con un'urgenza. Nessuno risponde.</div>
+                    </div>
+                    <div class="split-item"><span class="split-icon">🚫</span>
+                        <div class="split-text">3 no-show questa settimana. Poltrone vuote, incasso perduto.</div>
+                    </div>
+                    <div class="split-item"><span class="split-icon">📞</span>
+                        <div class="split-text">La segretaria passa 3 ore al giorno al telefono per conferme e
+                            spostamenti.</div>
+                    </div>
+                    <div class="split-item"><span class="split-icon">📊</span>
+                        <div class="split-text">Non sai quanti pazienti devi richiamare per l'igiene semestrale.</div>
+                    </div>
+                    <div class="split-item"><span class="split-icon">💸</span>
+                        <div class="split-text">25.000€/anno di stipendio per una copertura solo in orario d'ufficio.
+                        </div>
+                    </div>
+                </div>
+                <div class="split-side split-with">
+                    <div class="split-label"><span class="dot"></span> Con Kairòs</div>
+                    <div class="split-item"><span class="split-icon">✦</span>
+                        <div class="split-text">L'AI risponde H24. Filtra urgenze (ti chiama) da richieste semplici
+                            (gestisce da sola).</div>
+                    </div>
+                    <div class="split-item"><span class="split-icon">✦</span>
+                        <div class="split-text">Reminder automatici su WhatsApp. Se vuoi, pagamento anticipato della
+                            visita.</div>
+                    </div>
+                    <div class="split-item"><span class="split-icon">✦</span>
+                        <div class="split-text">Lo staff è libero di dedicarsi all'accoglienza in studio.</div>
+                    </div>
+                    <div class="split-item"><span class="split-icon">✦</span>
+                        <div class="split-text">Report automatici: richiami, occupazione poltrona, trend clinici.</div>
+                    </div>
+                    <div class="split-item"><span class="split-icon">✦</span>
+                        <div class="split-text">Copertura H24, 7/7, a una frazione del costo.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOLUZIONI -->
+        <section class="solutions">
+            <div class="solutions-header">
+                <h2 style="opacity:0;transform:translateY(20px);">Come funziona, <span style="color: var(--accent)">nel
+                        concreto.</span></h2>
+                <p style="opacity:0;transform:translateY(15px);">Tre strumenti progettati per il mondo sanitario.</p>
+            </div>
+
+            <div class="solution-card">
+                <h3>Segreteria H24 — <span>Notturna e Festiva</span></h3>
+                <p>
+                    Il mal di denti o l'urgenza non hanno orari. La nostra AI <strong>risponde anche di notte e
+                        domenica,</strong>
+                    filtrando le vere urgenze (che ti passa al cellulare) dalle semplici richieste di informazioni o
+                    prenotazioni,
+                    <strong>che gestisce in autonomia.</strong>
+                </p>
+            </div>
+
+            <div class="solution-card">
+                <h3>Gestione No-Show — <span>Il Vero Costo Nascosto</span></h3>
+                <p>
+                    Il sistema invia <strong>reminder automatici su WhatsApp.</strong>
+                    Se vuoi, può richiedere il pagamento anticipato della visita.
+                    Risultato? <strong>I pazienti si presentano.</strong> Le tue poltrone non restano vuote.
+                </p>
+            </div>
+
+            <div class="solution-card">
+                <h3>Analista Clinico — <span>Il Tuo Report su Telegram</span></h3>
+                <p>
+                    A fine settimana, <strong>apri Telegram.</strong>
+                    Il tuo analista Kairòs ti racconta come sta andando lo studio — con dati reali,
+                    trend clinici e azioni già eseguite in automatico.
+                </p>
+            </div>
+        </section>
+
+        <!-- TELEGRAM -->
+        <section class="telegram-section">
+            <div class="telegram-header">
+                <h2 style="opacity:0;transform:translateY(20px);">Ecco cosa vedrai <span style="color:var(--accent);">su
+                        Telegram.</span></h2>
+                <p style="opacity:0;transform:translateY(15px);">Il tuo studio, in un messaggio.</p>
+            </div>
+
+            <div class="telegram-phone" style="opacity:0;transform:translateY(30px);">
+                <div class="telegram-topbar">
+                    <div class="telegram-avatar">K</div>
+                    <div>
+                        <div class="telegram-name">Kairòs Analista</div>
+                        <div class="telegram-status">online</div>
+                    </div>
+                </div>
+                <div class="telegram-chat" id="tg-chat">
+                    <div class="tg-msg">
+                        Dottore, ecco il report dello Studio. 👋
+                        <span class="tg-time">19:00</span>
+                    </div>
+                    <div class="tg-msg">
+                        📊 <span class="highlight">Efficienza:</span> Questa settimana abbiamo il <span
+                            class="highlight">90% di occupazione</span> alla poltrona.
+                        <span class="tg-time">19:00</span>
+                    </div>
+                    <div class="tg-msg">
+                        🦷 <span class="highlight">Igiene vs Cure:</span> Le sedute di igiene sono in calo del 10%
+                        rispetto al mese scorso, mentre l'implantologia è stabile.
+                        <span class="tg-time">19:01</span>
+                    </div>
+                    <div class="tg-msg">
+                        📩 <span class="highlight">Richiami:</span> Ho inviato in automatico 50 messaggi ai pazienti che
+                        non fanno un controllo da 6 mesi. In <span class="highlight">12 hanno già prenotato</span> per
+                        settimana prossima.
+                        <span class="tg-time">19:01</span>
+                    </div>
+                    <div class="tg-msg">
+                        Tutto automatico. Tutto sul tuo telefono. 🚀
+                        <span class="tg-time">19:02</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COST COUNTER -->
+        <section class="cost-section">
+            <div class="cost-versus">
+                <div class="cost-item">
+                    <div class="cost-label">Segretaria Full-Time</div>
+                    <div class="cost-value cost-old">25.000€</div>
+                    <div class="cost-detail">/anno (CCNL)</div>
+                </div>
+                <div class="cost-arrow">→</div>
+                <div class="cost-item">
+                    <div class="cost-label">Kairòs H24, 7/7</div>
+                    <div class="cost-value cost-new"><span id="cost-new-num">0</span>€</div>
+                    <div class="cost-detail">/giorno — oltre 25x meno</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VALUE -->
+        <section class="value-section">
+            <div class="value-content">
+                <h2 class="value-title">Un ecosistema Medico <span class="accent">All-in-One.</span></h2>
+                <p class="value-text">
+                    Non ti serve un software per WhatsApp, uno per le chiamate e uno per i dati.
+                    <strong>Kairòs unifica tutto.</strong> Integriamo il tuo gestionale medico, rispettando la privacy
+                    dei pazienti
+                    e <strong>liberando il tuo staff dalle attività ripetitive,</strong>
+                    così possono dedicarsi all'accoglienza in studio.
+                </p>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <h2 class="cta-title">Riduci i costi fissi.<br><span class="accent">Libera il tuo tempo clinico.</span></h2>
+            <p class="cta-subtitle">I risultati li vedi già dalla prima settimana.</p>
+            <a href="index.html#prenota" class="cta-button">
+                Prenota una Demo per Studio Medico
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </a>
+        </section>
+    </main>
+
+    <footer
+        style="background-color: var(--rich-black); color: white; padding: 60px 24px; text-align: center; position: relative; z-index: 10;">
+        <div style="font-size: 2.2rem; font-weight: 800; letter-spacing: -0.05em; margin-bottom: 24px;">Kairòs</div>
+        <p style="color: #666; font-size: 0.95rem; font-weight: 500; letter-spacing: -0.01em;">Automazione per l'Italia
+            che lavora.</p>
+        <p style="color: #444; font-size: 0.85rem; margin-top: 48px;">© 2026 Kairòs Automation. Tutti i diritti
+            riservati.</p>
+
+        <div
+            style="display: flex; justify-content: center; gap: 24px; margin-top: 30px; font-size: 0.85rem; color: #888;">
+            <a href="privacy-policy.html" style="transition: color 0.3s ease;">Privacy Policy</a>
+            <a href="https://www.iubenda.com/privacy-policy/15965270/cookie-policy"
+                class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy "
+                style="transition: color 0.3s ease;">Cookie Policy</a>
+            <script
+                type="text/javascript">(function (w, d) { var loader = function () { var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s, tag); }; if (w.addEventListener) { w.addEventListener("load", loader, false); } else if (w.attachEvent) { w.attachEvent("onload", loader); } else { w.onload = loader; } })(window, document);</script>
+        </div>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        const heroTitle = document.getElementById('hero-title');
+        const titleHtml = heroTitle.innerHTML;
+        heroTitle.innerHTML = titleHtml.replace(/<span class="accent">(.*?)<\/span>/g, (match, content) => {
+            return content.split(' ').map(w => `<span class="hero-word accent">${w}</span>`).join(' ');
+        }).replace(/(^|>)([^<]+)(<|$)/g, (match, before, text, after) => {
+            if (text.trim() === '') return match;
+            return before + text.split(' ').map(w => w.trim() ? `<span class="hero-word">${w}</span>` : w).join(' ') + after;
+        });
+
+        gsap.to('.hero-word', { opacity: 1, y: 0, stagger: 0.04, duration: 0.6, delay: 0.3, ease: 'power3.out' });
+        gsap.to('.hero-badge', { opacity: 1, y: 0, duration: 0.8, delay: 0.1, ease: 'power3.out' });
+        gsap.to('.hero-subtitle', { opacity: 1, y: 0, duration: 0.8, delay: 1.2, ease: 'power3.out' });
+        gsap.to('.scroll-hint', { opacity: 1, y: 0, duration: 0.8, delay: 1.5, ease: 'power3.out' });
+
+        document.querySelectorAll('.split-header h2, .solutions-header h2, .solutions-header p, .telegram-header h2, .telegram-header p').forEach(el => {
+            gsap.to(el, { scrollTrigger: { trigger: el, start: 'top 85%' }, opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' });
+        });
+
+        document.querySelectorAll('.split-item').forEach((item, i) => {
+            gsap.to(item, { scrollTrigger: { trigger: item, start: 'top 88%' }, opacity: 1, x: 0, duration: 0.6, delay: i % 5 * 0.08, ease: 'power3.out' });
+        });
+
+        document.querySelectorAll('.solution-card').forEach((card, i) => {
+            gsap.to(card, { scrollTrigger: { trigger: card, start: 'top 82%' }, opacity: 1, y: 0, duration: 0.9, delay: i * 0.12, ease: 'power3.out' });
+        });
+
+        gsap.to('.telegram-phone', { scrollTrigger: { trigger: '.telegram-phone', start: 'top 80%' }, opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' });
+        document.querySelectorAll('.tg-msg').forEach((msg, i) => {
+            gsap.to(msg, { scrollTrigger: { trigger: '.telegram-chat', start: 'top 75%' }, opacity: 1, y: 0, scale: 1, duration: 0.5, delay: 0.4 + i * 0.6, ease: 'back.out(1.5)' });
+        });
+
+        document.querySelectorAll('.cost-item').forEach((item, i) => {
+            gsap.to(item, { scrollTrigger: { trigger: '.cost-section', start: 'top 80%' }, opacity: 1, scale: 1, duration: 0.7, delay: i * 0.4, ease: 'back.out(1.2)' });
+        });
+        gsap.to('.cost-arrow', { scrollTrigger: { trigger: '.cost-section', start: 'top 80%' }, opacity: 1, duration: 0.5, delay: 0.3, ease: 'power2.out' });
+
+        ScrollTrigger.create({
+            trigger: '.cost-section', start: 'top 80%', once: true,
+            onEnter: () => {
+                gsap.to({ val: 0 }, {
+                    val: 2.80, duration: 2, ease: 'power2.out',
+                    onUpdate: function () { document.getElementById('cost-new-num').textContent = this.targets()[0].val.toFixed(2).replace('.', ','); }
+                });
+            }
+        });
+
+        gsap.to('.value-title', { scrollTrigger: { trigger: '.value-title', start: 'top 82%' }, opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' });
+        gsap.to('.value-text', { scrollTrigger: { trigger: '.value-text', start: 'top 85%' }, opacity: 1, y: 0, duration: 0.9, delay: 0.15, ease: 'power3.out' });
+        gsap.to('.cta-title', { scrollTrigger: { trigger: '.cta-title', start: 'top 85%' }, opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' });
+        gsap.to('.cta-subtitle', { scrollTrigger: { trigger: '.cta-subtitle', start: 'top 88%' }, opacity: 1, y: 0, duration: 0.7, delay: 0.15, ease: 'power3.out' });
+        gsap.to('.cta-button', { scrollTrigger: { trigger: '.cta-button', start: 'top 90%' }, opacity: 1, y: 0, duration: 0.8, delay: 0.3, ease: 'power3.out' });
+    </script>
+
+    <!-- ElevenLabs Voice Agent -->
+    <elevenlabs-convai agent-id="agent_4401kj1cc06rfgbv69vtmb6v4n20"></elevenlabs-convai>
+
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+</body>
+
+</html>
