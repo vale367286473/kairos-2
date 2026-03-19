@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Pagine da non indicizzare
+Disallow: /immersive_landing_page.html
+Disallow: /privacy-policy.html
+
+Sitemap: https://kairos-24.com/sitemap.xml

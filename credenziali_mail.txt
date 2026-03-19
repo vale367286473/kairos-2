@@ -1,0 +1,9 @@
+# ─── Indirizzo mittente (appare nel campo "Da:" delle email) ──────────────────
+EMAIL=business@kairos-24.it
+
+# ─── Nome mittente (appare prima dell'email nel campo "Da:") ──────────────────
+NOME_MITTENTE=Raul Colombo — Kairos
+
+# ─── Chiave API Resend.com ────────────────────────────────────────────────────
+# Vai su resend.com → API Keys → crea una nuova chiave e incollala qui
+RESEND_API_KEY=re_9dgVNiye_Cx58JQ6YJ6WDZyNfdzDRCNXc
