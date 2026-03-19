@@ -504,7 +504,8 @@
             }
 
             .service-panel.active {
-                height: 340px;
+                height: auto;
+                min-height: 340px;
                 flex: none !important;
             }
 
@@ -698,6 +699,13 @@
 
         .kinetic-line {
             display: inline-block;
+        }
+
+        #privacy-consent:checked {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M2.5 8L6.5 12L13.5 4' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-size: 13px 13px;
+            background-repeat: no-repeat;
+            background-position: center;
         }
     </style>
 </head>
@@ -1016,7 +1024,24 @@
                 <div class="glass-card md:col-span-3 lg:col-span-1 p-10 flex flex-col justify-between hoverable min-h-[350px]"
                     data-tilt>
                     <div class="glass-content">
-                        <div class="text-6xl mb-6">⏳</div>
+                        <div class="mb-6">
+                            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Outer frame -->
+                                <rect x="16" y="6" width="32" height="4" rx="2" fill="#8A2BE2"/>
+                                <rect x="16" y="54" width="32" height="4" rx="2" fill="#8A2BE2"/>
+                                <!-- Left & right pillars -->
+                                <rect x="16" y="8" width="4" height="48" rx="2" fill="#8A2BE2" opacity="0.5"/>
+                                <rect x="44" y="8" width="4" height="48" rx="2" fill="#8A2BE2" opacity="0.5"/>
+                                <!-- Upper sand (top half) -->
+                                <path d="M20 10 L44 10 L34 30 L30 30 Z" fill="#8A2BE2" opacity="0.25"/>
+                                <!-- Lower sand (bottom half, filling up) -->
+                                <path d="M30 34 L34 34 L44 54 L20 54 Z" fill="#8A2BE2" opacity="0.45"/>
+                                <!-- Sand drip dot -->
+                                <circle cx="32" cy="32" r="2.5" fill="#8A2BE2"/>
+                                <!-- Shimmer line across top bar -->
+                                <rect x="20" y="7" width="12" height="1.5" rx="0.75" fill="white" opacity="0.3"/>
+                            </svg>
+                        </div>
                         <h4 class="text-3xl font-bold mb-4 text-black">60-70%</h4>
                     </div>
                     <div class="glass-content">
@@ -1129,9 +1154,6 @@
                     </button>
                     <div id="form-message" class="text-center text-sm font-medium mt-4 hidden"></div>
                 </form>
-                <footer class="mt-20 text-center text-gray-500 text-sm font-light">
-                    © 2024 Kairòs. Tutti i diritti riservati.
-                </footer>
             </div>
         </section>
 
