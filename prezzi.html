@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://kairos-24.com/prezzi.html" />
+    <title>Prezzi — Kairòs Automazione AI per PMI</title>
+
+    <!-- Iubenda Cookie Banner -->
+    <script type="text/javascript"
+        src="https://embeds.iubenda.com/widgets/97b32e17-7a35-4bcf-9c3e-7fa7f8205d84.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --porcelain: #F5F5F7;
+            --rich-black: #08080A;
+            --purple: #8A2BE2;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--porcelain);
+            color: var(--rich-black);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Noise */
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9000;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            mix-blend-mode: multiply;
+        }
+
+        /* ═══ ADAPTIVE NAVBAR ═══ */
+        #main-nav {
+            transition: color 0.4s ease, border-color 0.4s ease, background-color 0.4s ease;
+            background: rgba(245, 245, 247, 0.92);
+            backdrop-filter: blur(20px);
+        }
+
+        #main-nav .nav-logo {
+            color: var(--rich-black);
+            transition: color 0.4s ease;
+        }
+
+        #main-nav .nav-links a {
+            color: #777;
+            transition: color 0.3s ease;
+        }
+
+        #main-nav .nav-links a:hover {
+            color: var(--rich-black);
+        }
+
+        .nav-dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-dropdown > span {
+            cursor: pointer;
+            color: #777;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-dropdown:hover > span {
+            color: var(--rich-black);
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding-top: 14px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+            z-index: 200;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .nav-dropdown-inner {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 16px;
+            padding: 8px;
+            min-width: 260px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-dropdown-inner a {
+            display: block;
+            padding: 12px 16px;
+            color: #555;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .nav-dropdown-inner a:hover {
+            background: rgba(138, 43, 226, 0.08);
+            color: var(--rich-black) !important;
+        }
+
+        /* Dark mode dropdown */
+        #main-nav.nav-dark .nav-dropdown > span {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        #main-nav.nav-dark .nav-dropdown:hover > span {
+            color: white !important;
+        }
+
+        #main-nav.nav-dark .nav-dropdown-inner {
+            background: rgba(15, 15, 18, 0.95);
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        #main-nav.nav-dark .nav-dropdown-inner a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        #main-nav.nav-dark .nav-dropdown-inner a:hover {
+            background: rgba(138, 43, 226, 0.15);
+            color: white !important;
+        }
+
+        #main-nav .nav-cta {
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            color: var(--rich-black);
+            transition: all 0.3s ease;
+        }
+
+        #main-nav .nav-cta:hover {
+            background: var(--rich-black);
+            color: white;
+        }
+
+        /* Dark nav */
+        #main-nav.nav-dark {
+            background: rgba(8, 8, 10, 0.85) !important;
+            border-color: rgba(255, 255, 255, 0.05) !important;
+        }
+
+        #main-nav.nav-dark .nav-logo {
+            color: white;
+        }
+
+        #main-nav.nav-dark .nav-links a {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        #main-nav.nav-dark .nav-links a:hover {
+            color: white !important;
+        }
+
+        #main-nav.nav-dark .nav-cta {
+            border-color: rgba(255, 255, 255, 0.25);
+            color: white;
+        }
+
+        #main-nav.nav-dark .nav-cta:hover {
+            background: white;
+            color: black;
+        }
+
+        /* ═══ MOBILE HAMBURGER ═══ */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            z-index: 60;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--rich-black);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        #main-nav.nav-dark .hamburger span {
+            background: white;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 90px 24px 32px;
+            background: rgba(245, 245, 247, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 45;
+            flex-direction: column;
+            gap: 4px;
+            transform: translateY(-100%);
+            transition: transform 0.35s ease;
+        }
+
+        .mobile-menu.open {
+            transform: translateY(0);
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 14px 16px;
+            color: #555;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 12px;
+            transition: background 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(0, 0, 0, 0.04);
+        }
+
+        .mobile-menu .mobile-menu-cta {
+            display: block;
+            text-align: center;
+            margin-top: 12px;
+            padding: 16px;
+            background: var(--rich-black);
+            color: white;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        #main-nav.nav-dark ~ .mobile-menu {
+            background: rgba(8, 8, 10, 0.98);
+            border-bottom-color: rgba(255, 255, 255, 0.05);
+        }
+
+        #main-nav.nav-dark ~ .mobile-menu a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        #main-nav.nav-dark ~ .mobile-menu a:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        #main-nav.nav-dark ~ .mobile-menu .mobile-menu-cta {
+            background: white;
+            color: black;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+        }
+
+        /* ═══ FADE-UP ═══ */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* ═══ HERO ═══ */
+        .hero-tagline {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--purple);
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            color: var(--rich-black);
+            margin-bottom: 20px;
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 1.8vw, 1.2rem);
+            color: #777;
+            font-weight: 300;
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ═══ PRICING CARDS ═══ */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 56px auto 0;
+        }
+
+        @media (max-width: 900px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 480px;
+            }
+        }
+
+        .pricing-card {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card.featured {
+            border-color: rgba(138, 43, 226, 0.4);
+        }
+
+        .pricing-badge {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 5px 12px;
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #aaa;
+            margin-bottom: 28px;
+            align-self: flex-start;
+        }
+
+        .pricing-badge.purple {
+            background: rgba(138, 43, 226, 0.18);
+            color: #b366ff;
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+            letter-spacing: -0.03em;
+        }
+
+        .pricing-period {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 6px;
+            font-weight: 400;
+        }
+
+        .pricing-note {
+            font-size: 0.8rem;
+            color: #555;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .pricing-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.06);
+            margin: 28px 0;
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+        }
+
+        .pricing-features li .check {
+            color: var(--purple);
+            font-size: 1rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .pricing-cta {
+            display: block;
+            text-align: center;
+            padding: 14px 24px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            margin-top: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-cta.outline {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            background: transparent;
+        }
+
+        .pricing-cta.outline:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .pricing-cta.solid-purple {
+            background: var(--purple);
+            color: white;
+            border: 1px solid var(--purple);
+        }
+
+        .pricing-cta.solid-purple:hover {
+            background: #7a22d2;
+        }
+
+        /* ═══ TOGGLE ═══ */
+        .period-toggle {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.06);
+            border-radius: 100px;
+            padding: 4px;
+            gap: 2px;
+            margin-top: 40px;
+        }
+
+        .period-btn {
+            padding: 10px 22px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            color: #777;
+            transition: all 0.25s ease;
+        }
+
+        .period-btn.active {
+            background: var(--rich-black);
+            color: white;
+        }
+
+        @media (max-width: 520px) {
+            .period-toggle {
+                flex-wrap: wrap;
+                border-radius: 16px;
+                justify-content: center;
+            }
+        }
+
+        /* ═══ ECOSYSTEM CARD ═══ */
+        .eco-card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 0, 0, 0.06);
+            padding: 48px;
+            max-width: 880px;
+            margin: 48px auto 0;
+        }
+
+        .eco-price-amount {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--rich-black);
+            letter-spacing: -0.04em;
+            line-height: 1;
+        }
+
+        .eco-price-unit {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #999;
+        }
+
+        .eco-price-desc {
+            font-size: 0.9rem;
+            color: #999;
+            margin-top: 6px;
+            font-weight: 400;
+        }
+
+        .eco-divider {
+            height: 1px;
+            background: rgba(0, 0, 0, 0.07);
+            margin: 32px 0;
+        }
+
+        .eco-features-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        .eco-features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 32px;
+        }
+
+        @media (max-width: 640px) {
+            .eco-features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .eco-card {
+                padding: 32px 24px;
+            }
+        }
+
+        .eco-feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        .eco-feature-item .check {
+            color: var(--purple);
+            font-size: 1rem;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .eco-cta-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--rich-black);
+            color: white;
+            padding: 18px 36px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 36px;
+        }
+
+        .eco-cta-primary:hover {
+            background: #1a1a1e;
+            transform: translateY(-1px);
+        }
+
+        .eco-cta-secondary {
+            display: block;
+            text-align: center;
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .eco-cta-secondary a {
+            color: var(--purple);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .eco-cta-secondary a:hover {
+            text-decoration: underline;
+        }
+
+        /* ═══ SECTION TITLES ═══ */
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .section-sub {
+            font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+            font-weight: 300;
+            line-height: 1.75;
+            margin-top: 12px;
+        }
+
+        /* ═══ CUSTOM CARD (Sezione 4) ═══ */
+        .custom-card {
+            max-width: 600px;
+            margin: 40px auto 0;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .custom-card p {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 1rem;
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 28px;
+        }
+
+        .custom-cta {
+            display: inline-block;
+            padding: 14px 28px;
+            background: white;
+            color: var(--rich-black);
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .custom-cta:hover {
+            background: rgba(255, 255, 255, 0.88);
+            transform: translateY(-1px);
+        }
+
+        /* ═══ ACCORDION FAQ ═══ */
+        .faq-item {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--rich-black);
+            user-select: none;
+            gap: 16px;
+        }
+
+        .faq-question:hover {
+            color: var(--purple);
+        }
+
+        .faq-arrow {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+            color: #777;
+        }
+
+        .faq-item.open .faq-arrow {
+            transform: rotate(45deg);
+            background: var(--purple);
+            border-color: var(--purple);
+            color: white;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+
+        .faq-answer-inner {
+            padding-bottom: 24px;
+            font-size: 0.95rem;
+            color: #666;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+        }
+
+        /* ═══ FINAL CTA BUTTONS ═══ */
+        .final-cta-wrap {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn-white-solid {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            background: white;
+            color: var(--rich-black);
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-white-solid:hover {
+            background: rgba(255, 255, 255, 0.88);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline-white {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-white:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* ═══ FOOTER ═══ */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto 60px;
+        }
+
+        .footer-col-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #999;
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 400;
+            transition: color 0.25s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        @media (max-width: 640px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="noise-overlay"></div>
+
+    <!-- ═══ NAVBAR ═══ -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-6 md:px-8 py-5 flex justify-between items-center bg-[#F5F5F7]/80 backdrop-blur-xl border-b border-black/5"
+        id="main-nav">
+        <a href="index.html" class="nav-logo text-2xl font-bold tracking-tighter no-underline"
+            style="text-decoration:none;"><img src="logokairosok.png" alt="Kairos" style="height:48px;width:auto;display:block;"></a>
+        <div class="nav-links hidden md:flex gap-8 text-sm font-medium tracking-wide" style="align-items:center;">
+            <a href="chi-siamo.html">Chi siamo</a>
+            <div class="nav-dropdown">
+                <span>Che attività hai? ▾</span>
+                <div class="nav-dropdown-menu">
+                    <div class="nav-dropdown-inner">
+                        <a href="centro-estetico.html">Centro Estetico &amp; Parrucchiere</a>
+                        <a href="studio-medico.html">Studio Medico &amp; Dentistico</a>
+                        <a href="ristorazione.html">Ristorazione &amp; Food</a>
+                    </div>
+                </div>
+            </div>
+            <a href="integrazioni.html">App</a>
+            <a href="#" class="!text-black font-bold">Prezzi</a>
+            <a href="faq.html">FAQ</a>
+        </div>
+        <div class="nav-actions flex items-center gap-4">
+            <a href="index.html#prenota" class="nav-cta px-5 py-2 rounded-full text-sm font-semibold no-underline"
+                style="text-decoration:none;">
+                Prenota Call
+            </a>
+            <div class="hamburger" id="hamburger"
+                onclick="this.classList.toggle('open'); document.getElementById('mobile-menu').classList.toggle('open');">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══ MOBILE MENU ═══ -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="chi-siamo.html">Chi siamo</a>
+        <div style="padding-left:12px; display:flex; flex-direction:column; gap:2px;">
+            <span
+                style="padding:10px 16px 6px; color:#999; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em;">Che
+                attività hai?</span>
+            <a href="centro-estetico.html">Centro Estetico &amp; Parrucchiere</a>
+            <a href="studio-medico.html">Studio Medico &amp; Dentistico</a>
+            <a href="ristorazione.html">Ristorazione &amp; Food</a>
+        </div>
+        <a href="integrazioni.html">App</a>
+        <a href="#" style="font-weight:700; color:var(--rich-black);">Prezzi</a>
+        <a href="faq.html">FAQ</a>
+        <a href="index.html#prenota" class="mobile-menu-cta"
+            onclick="document.getElementById('hamburger').classList.remove('open'); document.getElementById('mobile-menu').classList.remove('open');">Prenota
+            Call →</a>
+    </div>
+
+    <main>
+
+        <!-- ═══ SEZIONE 1 — HERO ═══ -->
+        <section style="background: var(--porcelain); padding-top: 140px; padding-bottom: 80px; text-align: center; padding-left: 24px; padding-right: 24px;">
+            <div class="fade-up">
+                <p class="hero-tagline">PIANI E PREZZI</p>
+                <h1 class="hero-title">Trasparenza totale.</h1>
+                <p class="hero-sub">Scegli il piano giusto per la tua attività. Nessun costo nascosto, nessuna
+                    sorpresa.</p>
+            </div>
+        </section>
+
+        <!-- ═══ SEZIONE 2 — SERVIZI UNA TANTUM ═══ -->
+        <section id="dark-section-una-tantum"
+            style="background: #08080A; padding: 100px 24px;">
+            <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+                <h2 class="section-title fade-up" style="color: white;">Servizi una tantum</h2>
+                <p class="section-sub fade-up" style="color: #666; max-width: 540px; margin: 12px auto 0;">Paghi una
+                    volta sola. Il sito o il menu è tuo per sempre.</p>
+
+                <div class="pricing-grid">
+
+                    <!-- Card 1 — Solo Sito Web -->
+                    <div class="pricing-card fade-up">
+                        <span class="pricing-badge">Una tantum</span>
+                        <div class="pricing-price">€500</div>
+                        <div class="pricing-period">pagamento unico</div>
+                        <div class="pricing-divider"></div>
+                        <ul class="pricing-features">
+                            <li><span class="check">✓</span><span>Sito web professionale su misura</span></li>
+                            <li><span class="check">✓</span><span>Certificato SSL (https) incluso</span></li>
+                            <li><span class="check">✓</span><span>Posizionamento su Google (SEO base + GEO)</span></li>
+                            <li><span class="check">✓</span><span>Design responsive (mobile + desktop)</span></li>
+                            <li><span class="check">✓</span><span>Consegna in 7-10 giorni lavorativi</span></li>
+                        </ul>
+                        <a href="mailto:business@kairos-24.it" class="pricing-cta outline">Scrivici</a>
+                    </div>
+
+                    <!-- Card 2 — Web Menu Digitale -->
+                    <div class="pricing-card fade-up">
+                        <span class="pricing-badge">Una tantum</span>
+                        <div class="pricing-price">€150</div>
+                        <div class="pricing-period">pagamento unico</div>
+                        <div class="pricing-divider"></div>
+                        <ul class="pricing-features">
+                            <li><span class="check">✓</span><span>Menu digitale con QR code</span></li>
+                            <li><span class="check">✓</span><span>Aggiornabile da smartphone</span></li>
+                            <li><span class="check">✓</span><span>Nessuna app da scaricare per i clienti</span></li>
+                            <li><span class="check">✓</span><span>Design professionale coordinato</span></li>
+                            <li><span class="check">✓</span><span>Attivo entro 48 ore</span></li>
+                        </ul>
+                        <a href="mailto:business@kairos-24.it" class="pricing-cta outline">Scrivici</a>
+                    </div>
+
+                    <!-- Card 3 — Sito + Menu (Bundle) -->
+                    <div class="pricing-card featured fade-up">
+                        <span class="pricing-badge purple">Offerta Bundle</span>
+                        <div class="pricing-price">€550</div>
+                        <div class="pricing-period">pagamento unico</div>
+                        <div class="pricing-note">Sito €500 + Menu €150 acquistati insieme</div>
+                        <div class="pricing-divider"></div>
+                        <ul class="pricing-features">
+                            <li><span class="check">✓</span><span>Sito web professionale su misura</span></li>
+                            <li><span class="check">✓</span><span>Certificato SSL (https) incluso</span></li>
+                            <li><span class="check">✓</span><span>Posizionamento su Google (SEO base + GEO)</span></li>
+                            <li><span class="check">✓</span><span>Design responsive (mobile + desktop)</span></li>
+                            <li><span class="check">✓</span><span>Consegna in 7-10 giorni lavorativi</span></li>
+                            <li><span class="check">✓</span><span>Menu digitale con QR code</span></li>
+                            <li><span class="check">✓</span><span>Aggiornabile da smartphone</span></li>
+                            <li><span class="check">✓</span><span>Nessuna app da scaricare per i clienti</span></li>
+                            <li><span class="check">✓</span><span>Design professionale coordinato</span></li>
+                            <li><span class="check">✓</span><span>Attivo entro 48 ore</span></li>
+                        </ul>
+                        <a href="mailto:business@kairos-24.it" class="pricing-cta solid-purple">Scrivici</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ SEZIONE 3 — ECOSISTEMA COMPLETO ═══ -->
+        <section style="background: var(--porcelain); padding: 100px 24px;">
+            <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+                <h2 class="section-title fade-up">L'Ecosistema Completo</h2>
+                <p class="section-sub fade-up" style="color: #777; max-width: 540px; margin: 12px auto 0;">Tutti i
+                    nostri servizi in un unico abbonamento. Attivo entro 48 ore dalla call.</p>
+
+                <!-- Toggle periodi -->
+                <div class="period-toggle fade-up">
+                    <button class="period-btn active" onclick="setPeriod('mensile', this)">Mensile</button>
+                    <button class="period-btn" onclick="setPeriod('trimestrale', this)">Trimestrale</button>
+                    <button class="period-btn" onclick="setPeriod('semestrale', this)">Semestrale</button>
+                    <button class="period-btn" onclick="setPeriod('annuale', this)">Annuale</button>
+                </div>
+
+                <!-- Card grande ecosistema -->
+                <div class="eco-card fade-up">
+                    <div style="display:flex; align-items:flex-end; gap:4px; flex-wrap:wrap;">
+                        <span class="eco-price-amount" id="eco-amount">€125</span>
+                        <span class="eco-price-unit" id="eco-unit" style="padding-bottom: 6px;">/mese</span>
+                    </div>
+                    <p class="eco-price-desc" id="eco-desc">fatturato mensilmente</p>
+
+                    <div class="eco-divider"></div>
+
+                    <p class="eco-features-title">Cosa è incluso:</p>
+                    <div class="eco-features-grid">
+                        <div class="eco-feature-item"><span class="check">✓</span><span>Risposta AI H24 (centralino virtuale)</span></div>
+                        <div class="eco-feature-item"><span class="check">✓</span><span>Clonazione voce personalizzata</span></div>
+                        <div class="eco-feature-item"><span class="check">✓</span><span>Lista d'attesa intelligente</span></div>
+                        <div class="eco-feature-item"><span class="check">✓</span><span>Recupero clienti inattivi</span></div>
+                        <div class="eco-feature-item"><span class="check">✓</span><span>Automazioni personalizzate (Orchestratore)</span></div>
+                        <div class="eco-feature-item"><span class="check">✓</span><span>Analista su Telegram</span></div>
+                        <div class="eco-feature-item"><span class="check">✓</span><span>Sito web professionale</span></div>
+                        <div class="eco-feature-item"><span class="check">✓</span><span>Web menu digitale con QR code</span></div>
+                        <div class="eco-feature-item"><span class="check">✓</span><span>Posizionamento su Google (SEO + GEO)</span></div>
+                        <div class="eco-feature-item"><span class="check">✓</span><span>Aggiornamenti e manutenzione inclusi</span></div>
+                        <div class="eco-feature-item"><span class="check">✓</span><span>Configurazione completa inclusa</span></div>
+                        <div class="eco-feature-item"><span class="check">✓</span><span>Supporto in italiano</span></div>
+                    </div>
+
+                    <a href="index.html#prenota" class="eco-cta-primary">
+                        Prenota una Call Gratuita
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                    <p class="eco-cta-secondary">o <a href="mailto:business@kairos-24.it">scrivici a
+                            business@kairos-24.it</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ SEZIONE 4 — PACCHETTO PERSONALIZZATO ═══ -->
+        <section id="dark-section-custom" style="background: #08080A; padding: 100px 24px;">
+            <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+                <h2 class="section-title fade-up" style="color: white;">Hai esigenze specifiche?</h2>
+                <p class="section-sub fade-up" style="color: #666; max-width: 600px; margin: 12px auto 0;">Vuoi
+                    integrare l'AI nella tua attività in modo su misura? Automazioni personalizzate, consulenza
+                    strategica, integrazioni avanzate. Ogni progetto è diverso.</p>
+
+                <div class="custom-card fade-up">
+                    <p>Scrivici descrivendo la tua attività e cosa vorresti automatizzare. Ti risponderemo con un
+                        preventivo personalizzato.</p>
+                    <a href="mailto:business@kairos-24.it" class="custom-cta">Scrivici a business@kairos-24.it</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ SEZIONE 5 — FAQ PREZZI ═══ -->
+        <section style="background: var(--porcelain); padding: 100px 24px;">
+            <div style="max-width: 680px; margin: 0 auto;">
+                <h2 class="section-title fade-up" style="text-align:center; margin-bottom: 56px;">Domande sui prezzi
+                </h2>
+
+                <!-- FAQ 1 -->
+                <div class="faq-item fade-up">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Ci sono costi nascosti?</span>
+                        <div class="faq-arrow">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round">
+                                <path d="M12 5v14M5 12h14" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">No. Il prezzo che vedi è quello che paghi. Per i servizi una
+                            tantum è un pagamento unico. Per l'Ecosistema Completo il costo è fisso
+                            mensile/trimestrale/semestrale o annuale, senza sorprese.</div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item fade-up">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Posso cambiare o disdire il piano?</span>
+                        <div class="faq-arrow">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round">
+                                <path d="M12 5v14M5 12h14" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Sì. Puoi cambiare periodo di fatturazione o disdire in qualsiasi
+                            momento. Non ci sono penali o contratti vincolanti a lungo termine.</div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item fade-up">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Come si paga?</span>
+                        <div class="faq-arrow">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round">
+                                <path d="M12 5v14M5 12h14" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Gestiamo il pagamento in modo semplice: ti invieremo le istruzioni
+                            dopo la call gratuita.</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ═══ SEZIONE 6 — CTA FINALE ═══ -->
+        <section id="dark-section-final" style="background: #08080A; padding: 100px 24px; text-align: center;">
+            <div style="max-width: 600px; margin: 0 auto;">
+                <h2 class="section-title fade-up" style="color: white;">Hai ancora dubbi?</h2>
+                <p class="section-sub fade-up" style="color: #666; margin-top: 16px;">Prenota una call gratuita di 20
+                    minuti. Ti spieghiamo tutto senza impegno.</p>
+                <div class="final-cta-wrap fade-up">
+                    <a href="index.html#prenota" class="btn-white-solid">
+                        Prenota una Call Gratuita
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                    <a href="mailto:business@kairos-24.it" class="btn-outline-white">Scrivici via email</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer style="background: #EBEBED; color: var(--rich-black); padding: 80px 24px 40px; position: relative; z-index: 10;">
+        <div class="footer-grid">
+
+            <!-- Colonna 1 — Brand -->
+            <div>
+                <div style="margin-bottom: 12px;"><img src="logokairosok.png" alt="Kairos" style="height:60px;width:auto;display:block;"></div>
+                <p style="color: #777; font-size: 0.875rem; font-weight: 300; line-height: 1.6; margin: 0 0 14px;">
+                    Automazione per l'Italia che lavora.</p>
+                <a href="mailto:business@kairos-24.it"
+                    style="color: #666; font-size: 0.85rem; text-decoration: none; transition: color 0.25s;"
+                    onmouseover="this.style.color='white'" onmouseout="this.style.color='#666'">business@kairos-24.it</a>
+            </div>
+
+            <!-- Colonna 2 — Navigazione -->
+            <div>
+                <p class="footer-col-title">Esplora</p>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="chi-siamo.html">Chi siamo</a>
+                    <a href="prezzi.html">Prezzi</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="integrazioni.html">App</a>
+                </div>
+            </div>
+
+            <!-- Colonna 3 — Settori -->
+            <div>
+                <p class="footer-col-title">Settori</p>
+                <div class="footer-links">
+                    <a href="centro-estetico.html">Centro Estetico</a>
+                    <a href="studio-medico.html">Studio Medico</a>
+                    <a href="ristorazione.html">Ristorazione</a>
+                </div>
+            </div>
+
+            <!-- Colonna 4 — Contatti -->
+            <div>
+                <p class="footer-col-title">Contatti</p>
+                <div class="footer-links">
+                    <a href="mailto:business@kairos-24.it">business@kairos-24.it</a>
+                    <a href="index.html#prenota"
+                        style="color: var(--purple) !important; font-weight: 500;">Prenota una call gratuita →</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="height: 1px; background: rgba(255,255,255,0.06); max-width: 1100px; margin: 0 auto 32px;"></div>
+
+        <div
+            style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+            <p style="color: #444; font-size: 0.8rem; margin: 0;">© 2026 Kairòs Automation. Tutti i diritti
+                riservati.</p>
+            <div style="display: flex; gap: 20px; font-size: 0.8rem;">
+                <a href="privacy-policy.html"
+                    style="color: #555; text-decoration: none; transition: color 0.25s;"
+                    onmouseover="this.style.color='white'" onmouseout="this.style.color='#555'">Privacy Policy</a>
+                <a href="https://www.iubenda.com/privacy-policy/49016120/cookie-policy"
+                    class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy"
+                    style="color: #555; text-decoration: none; transition: color 0.25s;">Cookie Policy</a>
+                <script type="text/javascript">(function (w, d) { var loader = function () { var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s, tag); }; if (w.addEventListener) { w.addEventListener("load", loader, false); } else if (w.attachEvent) { w.attachEvent("onload", loader); } else { w.onload = loader; } })(window, document);</script>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══ FLOATING EMAIL BUTTON ═══ -->
+    <a href="mailto:business@kairos-24.it" class="floating-email" title="Scrivici via email">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="3" />
+            <path d="M2 7l10 7 10-7" />
+        </svg>
+        <span>Scrivici</span>
+    </a>
+
+    <style>
+        .floating-email {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 999;
+            background: #8A2BE2;
+            color: white;
+            padding: 14px 20px;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 24px rgba(138, 43, 226, 0.35);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .floating-email:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(138, 43, 226, 0.45);
+        }
+
+        @media (max-width: 768px) {
+            .floating-email span {
+                display: none;
+            }
+
+            .floating-email {
+                padding: 14px;
+            }
+        }
+    </style>
+
+    <!-- ═══ SCRIPTS ═══ -->
+    <script>
+        // ─── GSAP SCROLLTRIGGER SETUP ───
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray('.fade-up').forEach(el => {
+            gsap.to(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 88%',
+                    toggleActions: 'play none none none'
+                },
+                opacity: 1,
+                y: 0,
+                duration: 0.9,
+                ease: 'power3.out'
+            });
+        });
+
+        // ─── NAV DARK TOGGLE ───
+        const nav = document.getElementById('main-nav');
+        const darkSections = document.querySelectorAll('#dark-section-una-tantum, #dark-section-custom, #dark-section-final');
+
+        darkSections.forEach(section => {
+            ScrollTrigger.create({
+                trigger: section,
+                start: 'top 60px',
+                end: 'bottom 60px',
+                onEnter: () => {
+                    nav.classList.add('nav-dark');
+                    nav.style.borderColor = 'rgba(255,255,255,0.05)';
+                    nav.style.background = 'rgba(8,8,10,0.85)';
+                },
+                onLeave: () => {
+                    nav.classList.remove('nav-dark');
+                    nav.style.borderColor = '';
+                    nav.style.background = '';
+                },
+                onEnterBack: () => {
+                    nav.classList.add('nav-dark');
+                    nav.style.borderColor = 'rgba(255,255,255,0.05)';
+                    nav.style.background = 'rgba(8,8,10,0.85)';
+                },
+                onLeaveBack: () => {
+                    nav.classList.remove('nav-dark');
+                    nav.style.borderColor = '';
+                    nav.style.background = '';
+                }
+            });
+        });
+
+        // ─── TOGGLE PREZZI ECOSISTEMA ───
+        const periodData = {
+            mensile: {
+                amount: '€125',
+                unit: '/mese',
+                desc: 'fatturato mensilmente'
+            },
+            trimestrale: {
+                amount: '€375',
+                unit: '/trimestre',
+                desc: 'fatturato ogni 3 mesi'
+            },
+            semestrale: {
+                amount: '€750',
+                unit: '/semestre',
+                desc: 'fatturato ogni 6 mesi'
+            },
+            annuale: {
+                amount: '€1.500',
+                unit: '/anno',
+                desc: 'fatturato annualmente'
+            }
+        };
+
+        function setPeriod(period, btn) {
+            // Aggiorna tasti
+            document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Aggiorna prezzi con animazione rapida
+            const amountEl = document.getElementById('eco-amount');
+            const unitEl = document.getElementById('eco-unit');
+            const descEl = document.getElementById('eco-desc');
+
+            amountEl.style.opacity = '0';
+            amountEl.style.transform = 'translateY(-8px)';
+            unitEl.style.opacity = '0';
+            descEl.style.opacity = '0';
+
+            setTimeout(() => {
+                const data = periodData[period];
+                amountEl.textContent = data.amount;
+                unitEl.textContent = data.unit;
+                descEl.textContent = data.desc;
+
+                amountEl.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                unitEl.style.transition = 'opacity 0.3s ease';
+                descEl.style.transition = 'opacity 0.3s ease';
+
+                amountEl.style.opacity = '1';
+                amountEl.style.transform = 'translateY(0)';
+                unitEl.style.opacity = '1';
+                descEl.style.opacity = '1';
+            }, 150);
+        }
+
+        // ─── ACCORDION FAQ ───
+        function toggleFaq(questionEl) {
+            const item = questionEl.parentElement;
+            const isOpen = item.classList.contains('open');
+
+            // Chiudi tutti
+            document.querySelectorAll('.faq-item.open').forEach(openItem => {
+                openItem.classList.remove('open');
+            });
+
+            // Apri quello cliccato se era chiuso
+            if (!isOpen) {
+                item.classList.add('open');
+            }
+        }
+    </script>
+
+</body>
+
+</html>

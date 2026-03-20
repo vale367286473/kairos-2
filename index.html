@@ -225,7 +225,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 120px 24px 80px;
+            padding: 140px 24px 80px;
             gap: 48px;
         }
 
@@ -453,6 +453,14 @@
         }
 
         /* ═══ CTA ═══ */
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+            align-items: center;
+        }
+
         .hero-cta a {
             display: inline-flex;
             align-items: center;
@@ -481,10 +489,218 @@
             transform: translateX(4px);
         }
 
+        .cta-secondary {
+            background: transparent !important;
+            color: #555 !important;
+            border: 1.5px solid rgba(0,0,0,0.18) !important;
+            box-shadow: none !important;
+            font-weight: 500 !important;
+            padding: 20px 36px !important;
+        }
+
+        .cta-secondary:hover {
+            border-color: var(--rich-black) !important;
+            color: var(--rich-black) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* ═══ COME FUNZIONA ═══ */
+        .come-funziona-section {
+            padding: 100px 24px;
+            background: var(--rich-black);
+        }
+
+        .come-funziona-section h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            color: white;
+            text-align: center;
+            margin-bottom: 16px;
+            letter-spacing: -0.03em;
+        }
+
+        .come-funziona-section .cf-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 72px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .step-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 20px;
+            padding: 40px 32px;
+            transition: border-color 0.3s ease;
+        }
+
+        .step-card:hover {
+            border-color: rgba(138,43,226,0.3);
+        }
+
+        .step-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--purple);
+            opacity: 0.5;
+            line-height: 1;
+            margin-bottom: 20px;
+            letter-spacing: -0.04em;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .step-desc {
+            font-size: 0.95rem;
+            color: #888;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+            .come-funziona-section {
+                padding: 72px 16px;
+            }
+        }
+
+        /* ═══ FAQ SECTION ═══ */
+        .faq-section {
+            padding: 100px 24px;
+            background: var(--porcelain);
+        }
+
+        .faq-section h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            color: var(--rich-black);
+            margin-bottom: 12px;
+            letter-spacing: -0.03em;
+        }
+
+        .faq-section .faq-subtitle {
+            color: #777;
+            font-size: 1.05rem;
+            font-weight: 300;
+            margin-bottom: 56px;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(0,0,0,0.07);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 0;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--rich-black);
+            user-select: none;
+            gap: 16px;
+        }
+
+        .faq-arrow {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+            color: #aaa;
+        }
+
+        .faq-item.open .faq-arrow {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            color: #666;
+            font-weight: 300;
+            line-height: 1.75;
+            font-size: 0.95rem;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 400px;
+            padding-bottom: 22px;
+        }
+
+        .faq-link {
+            display: block;
+            text-align: center;
+            margin-top: 48px;
+            color: var(--purple);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.01em;
+        }
+
+        .faq-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ═══ FLOATING EMAIL ═══ */
+        .floating-email {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 998;
+            background: var(--purple);
+            color: white;
+            padding: 14px 22px;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 24px rgba(138,43,226,0.35);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .floating-email:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 36px rgba(138,43,226,0.45);
+        }
+
+        @media (max-width: 768px) {
+            .floating-email span { display: none; }
+            .floating-email { padding: 14px; bottom: 24px; right: 20px; }
+            .hero-cta { flex-direction: column; }
+            .cta-secondary { padding: 18px 32px !important; }
+        }
+
         /* ═══ MOBILE ACCORDION ═══ */
         @media (max-width: 768px) {
             .hero {
-                padding: 100px 16px 60px;
+                padding: 120px 16px 60px;
                 gap: 36px;
             }
 
@@ -723,7 +939,7 @@
     <!-- Nav -->
     <nav class="fixed top-0 left-0 w-full z-50 px-6 md:px-8 py-5 flex justify-between items-center opacity-0"
         id="main-nav">
-        <div class="nav-logo text-2xl font-bold tracking-tighter hoverable">Kairòs</div>
+        <div class="nav-logo text-2xl font-bold tracking-tighter hoverable"><img src="logokairosok.png" alt="Kairos" style="height:48px;width:auto;display:block;"></div>
         <div class="nav-links hidden md:flex gap-8 text-sm font-medium tracking-wide">
             <a href="chi-siamo.html" class="hoverable">Chi siamo</a>
             <div class="nav-dropdown hoverable">
@@ -737,6 +953,8 @@
                 </div>
             </div>
             <a href="integrazioni.html" class="hoverable">App</a>
+            <a href="prezzi.html" class="hoverable">Prezzi</a>
+            <a href="faq.html" class="hoverable">FAQ</a>
         </div>
         <div class="nav-actions flex items-center gap-4">
             <a href="#prenota" class="nav-cta hoverable px-5 py-2 rounded-full text-sm font-semibold">
@@ -760,6 +978,8 @@
             <a href="ristorazione.html">Ristorazione & Food</a>
         </div>
         <a href="integrazioni.html">App</a>
+        <a href="prezzi.html">Prezzi</a>
+        <a href="faq.html">FAQ</a>
         <a href="#prenota" class="mobile-menu-cta"
             onclick="document.getElementById('hamburger').classList.remove('open'); document.getElementById('mobile-menu').classList.remove('open');">Prenota
             Call →</a>
@@ -942,11 +1162,15 @@
             <!-- CTA -->
             <div class="hero-cta">
                 <a href="#prenota" class="hoverable">
-                    <span>Inizia a risparmiare ore di lavoro</span>
+                    <span>Prenota una Call Gratuita</span>
                     <svg class="cta-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
+                </a>
+                <a href="mailto:business@kairos-24.it" class="cta-secondary hoverable">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    <span>Scrivici via email</span>
                 </a>
             </div>
 
@@ -959,6 +1183,29 @@
                 </svg>
             </div>
 
+        </section>
+
+        <!-- ═══ COME FUNZIONA ═══ -->
+        <section class="come-funziona-section" id="come-funziona">
+            <h2 class="fade-up">Come funziona</h2>
+            <p class="cf-subtitle fade-up">Tre passi. Nessuna competenza tecnica richiesta.</p>
+            <div class="steps-grid">
+                <div class="step-card fade-up">
+                    <div class="step-number">01</div>
+                    <div class="step-title">Ci senti</div>
+                    <p class="step-desc">Una call gratuita di 20 minuti. Ci racconti la tua attività e capiamo insieme cosa ti serve. Nessun impegno.</p>
+                </div>
+                <div class="step-card fade-up">
+                    <div class="step-number">02</div>
+                    <div class="step-title">Configuriamo</div>
+                    <p class="step-desc">Noi impostiamo tutto. Tu non tocchi nulla. In 48 ore il sistema è attivo e pronto a lavorare per te.</p>
+                </div>
+                <div class="step-card fade-up">
+                    <div class="step-number">03</div>
+                    <div class="step-title">Funziona per te</div>
+                    <p class="step-desc">Da quel momento lavora al posto tuo: risponde, prenota, recupera clienti — 24 ore su 24, 7 giorni su 7.</p>
+                </div>
+            </div>
         </section>
 
         <!-- ═══ DATA SECTION ═══ -->
@@ -1073,6 +1320,59 @@
                     code,
                     studiati per aumentare lo scontrino medio.
                 </p>
+            </div>
+        </section>
+
+        <!-- ═══ FAQ SECTION ═══ -->
+        <section class="faq-section" id="faq-home">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="fade-up">Domande frequenti</h2>
+                <p class="faq-subtitle fade-up">Le risposte alle domande che ci fanno sempre.</p>
+                <div class="faq-list fade-up">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Quanto tempo ci vuole per iniziare?</span>
+                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
+                        <div class="faq-answer">Dalla call gratuita all'attivazione ci vogliono generalmente 24-48 ore lavorative. Dipende dai servizi scelti e da quanto materiale ci fornisci (orari, servizi, listino, ecc.).</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Devo avere competenze tecniche?</span>
+                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
+                        <div class="faq-answer">Assolutamente no. Gestiamo noi ogni aspetto tecnico. Quello che ti chiediamo è solo dedicarci 20 minuti per raccontarci come funziona la tua attività.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Funziona per qualsiasi tipo di attività?</span>
+                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
+                        <div class="faq-answer">Principalmente lavoriamo con PMI nei settori estetica e benessere, sanità privata, ristorazione e food. Se hai un'attività diversa, scrivici e valutiamo insieme.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Posso disdire quando voglio?</span>
+                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
+                        <div class="faq-answer">Sì. Non ci sono contratti vincolanti a lungo termine né penali. Puoi cambiare piano o disdire in qualsiasi momento con un semplice avviso.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>È diverso da un semplice chatbot?</span>
+                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
+                        <div class="faq-answer">Sì, molto. Un chatbot risponde a domande fisse preimpostate. Il sistema Kairòs ragiona in modo contestuale: capisce la richiesta, legge la tua agenda in tempo reale, prende appuntamenti e si comporta come un assistente umano.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Chi configura tutto?</span>
+                            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </div>
+                        <div class="faq-answer">Noi. Dopo la call gratuita il nostro team si occupa di tutta la configurazione. Tu approvi il risultato finale prima che vada live. Nessuna operazione tecnica richiesta da parte tua.</div>
+                    </div>
+                </div>
+                <a href="faq.html" class="faq-link fade-up">Vedi tutte le domande →</a>
             </div>
         </section>
 
@@ -1209,22 +1509,6 @@
             max: 8, speed: 400, glare: true, 'max-glare': 0.15
         });
 
-        // ─── ADAPTIVE NAVBAR (dark sections toggle) ───
-        const nav = document.getElementById('main-nav');
-        const darkSections = document.querySelectorAll('#team-section, #prenota');
-
-        darkSections.forEach(section => {
-            ScrollTrigger.create({
-                trigger: section,
-                start: 'top 60px',
-                end: 'bottom 60px',
-                onEnter: () => nav.classList.add('nav-dark'),
-                onLeave: () => nav.classList.remove('nav-dark'),
-                onEnterBack: () => nav.classList.add('nav-dark'),
-                onLeaveBack: () => nav.classList.remove('nav-dark'),
-            });
-        });
-
 
         // ─── FORM SUBMISSION (Web3Forms AJAX) ───
         const contactForm = document.getElementById('contact-form');
@@ -1266,29 +1550,87 @@
     </script>
 
     <!-- Footer -->
-    <footer
-        style="background-color: var(--rich-black); color: white; padding: 60px 24px; text-align: center; position: relative; z-index: 10;">
-        <div style="font-size: 2.2rem; font-weight: 800; letter-spacing: -0.05em; margin-bottom: 24px;">Kairòs</div>
-        <p style="color: #666; font-size: 0.95rem; font-weight: 500; letter-spacing: -0.01em;">Automazione per l'Italia
-            che lavora.</p>
-        <p style="color: #444; font-size: 0.85rem; margin-top: 48px;">© 2026 Kairòs Automation. Tutti i diritti
-            riservati.</p>
-
-        <div
-            style="display: flex; justify-content: center; gap: 24px; margin-top: 30px; font-size: 0.85rem; color: #888;">
-            <a href="privacy-policy.html" style="transition: color 0.3s ease;">Privacy Policy</a>
-            <a href="https://www.iubenda.com/privacy-policy/49016120/cookie-policy"
-                class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy "
-                style="transition: color 0.3s ease;">Cookie Policy</a>
-            <script
-                type="text/javascript">(function (w, d) { var loader = function () { var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s, tag); }; if (w.addEventListener) { w.addEventListener("load", loader, false); } else if (w.attachEvent) { w.attachEvent("onload", loader); } else { w.onload = loader; } })(window, document);</script>
+    <footer style="background-color: #EBEBED; color: var(--rich-black); padding: 80px 24px 40px; position: relative; z-index: 10;">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 48px; margin-bottom: 60px;">
+                <!-- Brand -->
+                <div>
+                    <div style="margin-bottom:10px;"><img src="logokairosok.png" alt="Kairos" style="height:60px;width:auto;display:block;"></div>
+                    <p style="color: #666; font-size: 0.9rem; font-weight: 400; line-height: 1.6; margin-bottom: 14px;">Automazione per l'Italia che lavora.</p>
+                    <a href="mailto:business@kairos-24.it" style="color: #555; font-size: 0.85rem; text-decoration: none; display: block; transition: color 0.3s;">business@kairos-24.it</a>
+                </div>
+                <!-- Navigazione -->
+                <div>
+                    <p style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #555; margin-bottom: 18px;">Esplora</p>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <a href="index.html" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">Home</a>
+                        <a href="chi-siamo.html" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">Chi siamo</a>
+                        <a href="prezzi.html" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">Prezzi</a>
+                        <a href="faq.html" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">FAQ</a>
+                        <a href="integrazioni.html" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">App</a>
+                    </div>
+                </div>
+                <!-- Settori -->
+                <div>
+                    <p style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #555; margin-bottom: 18px;">Settori</p>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <a href="centro-estetico.html" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">Centro Estetico & Parrucchiere</a>
+                        <a href="studio-medico.html" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">Studio Medico & Dentistico</a>
+                        <a href="ristorazione.html" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">Ristorazione & Food</a>
+                    </div>
+                </div>
+                <!-- Contatti -->
+                <div>
+                    <p style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #555; margin-bottom: 18px;">Contatti</p>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <a href="mailto:business@kairos-24.it" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">business@kairos-24.it</a>
+                        <a href="#prenota" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">Prenota una call gratuita →</a>
+                    </div>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 32px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+                <p style="color: #444; font-size: 0.82rem; margin: 0;">© 2026 Kairòs Automation. Tutti i diritti riservati.</p>
+                <div style="display: flex; gap: 20px; font-size: 0.82rem; color: #555;">
+                    <a href="privacy-policy.html" style="color: #555; text-decoration: none; transition: color 0.3s;">Privacy Policy</a>
+                    <a href="https://www.iubenda.com/privacy-policy/49016120/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy" style="color: #555; text-decoration: none; transition: color 0.3s;">Cookie Policy</a>
+                    <script type="text/javascript">(function (w, d) { var loader = function () { var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s, tag); }; if (w.addEventListener) { w.addEventListener("load", loader, false); } else if (w.attachEvent) { w.attachEvent("onload", loader); } else { w.onload = loader; } })(window, document);</script>
+                </div>
+            </div>
         </div>
     </footer>
 
     <!-- ElevenLabs Voice Agent -->
     <elevenlabs-convai agent-id="agent_9001kj2myc7eev9rmh7r4xrreevs"></elevenlabs-convai>
-
     <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+
+    <!-- Floating Email Button -->
+    <a href="mailto:business@kairos-24.it" class="floating-email" title="Scrivici via email">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <span>Scrivici</span>
+    </a>
+
+    <script>
+        // ─── FADE-UP ANIMATIONS ───
+        gsap.utils.toArray('.fade-up').forEach(el => {
+            gsap.fromTo(el,
+                { y: 30, opacity: 0 },
+                {
+                    scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+                    y: 0, opacity: 1, duration: 0.9, ease: 'power3.out'
+                }
+            );
+        });
+
+        // ─── FAQ ACCORDION ───
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const isOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!isOpen) item.classList.add('open');
+            });
+        });
+    </script>
 </body>
 
 </html>

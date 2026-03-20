@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://kairos-24.com/faq.html" />
+    <title>FAQ - Kairòs Automazione AI per PMI Italiane</title>
+
+    <!-- Iubenda Cookie Banner -->
+    <script type="text/javascript"
+        src="https://embeds.iubenda.com/widgets/97b32e17-7a35-4bcf-9c3e-7fa7f8205d84.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --porcelain: #F5F5F7;
+            --rich-black: #08080A;
+            --purple: #8A2BE2;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--porcelain);
+            color: var(--rich-black);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow-x: hidden;
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ═══ NOISE OVERLAY ═══ */
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9000;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            mix-blend-mode: multiply;
+        }
+
+        /* ═══ ADAPTIVE NAVBAR ═══ */
+        #main-nav {
+            transition: color 0.4s ease, border-color 0.4s ease, background-color 0.4s ease;
+            background: rgba(245, 245, 247, 0.92);
+            backdrop-filter: blur(20px);
+        }
+
+        #main-nav .nav-logo {
+            color: var(--rich-black);
+            transition: color 0.4s ease;
+        }
+
+        #main-nav .nav-links a {
+            color: #777;
+            transition: color 0.3s ease;
+        }
+
+        #main-nav .nav-links a:hover {
+            color: var(--rich-black);
+        }
+
+        .nav-dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-dropdown > span {
+            cursor: pointer;
+            color: #777;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-dropdown:hover > span {
+            color: var(--rich-black);
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding-top: 14px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+            z-index: 200;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .nav-dropdown-inner {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 16px;
+            padding: 8px;
+            min-width: 260px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-dropdown-inner a {
+            display: block;
+            padding: 12px 16px;
+            color: #555;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .nav-dropdown-inner a:hover {
+            background: rgba(138, 43, 226, 0.08);
+            color: var(--rich-black) !important;
+        }
+
+        /* Dark mode dropdown */
+        #main-nav.nav-dark .nav-dropdown > span {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        #main-nav.nav-dark .nav-dropdown:hover > span {
+            color: white !important;
+        }
+
+        #main-nav.nav-dark .nav-dropdown-inner {
+            background: rgba(15, 15, 18, 0.95);
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        #main-nav.nav-dark .nav-dropdown-inner a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        #main-nav.nav-dark .nav-dropdown-inner a:hover {
+            background: rgba(138, 43, 226, 0.15);
+            color: white !important;
+        }
+
+        #main-nav .nav-cta {
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            color: var(--rich-black);
+            transition: all 0.3s ease;
+        }
+
+        #main-nav .nav-cta:hover {
+            background: var(--rich-black);
+            color: white;
+        }
+
+        /* Dark nav */
+        #main-nav.nav-dark {
+            background: rgba(8, 8, 10, 0.85) !important;
+            border-color: rgba(255, 255, 255, 0.05) !important;
+        }
+
+        #main-nav.nav-dark .nav-logo {
+            color: white;
+        }
+
+        #main-nav.nav-dark .nav-links a {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        #main-nav.nav-dark .nav-links a:hover {
+            color: white !important;
+        }
+
+        #main-nav.nav-dark .nav-cta {
+            border-color: rgba(255, 255, 255, 0.25);
+            color: white;
+        }
+
+        #main-nav.nav-dark .nav-cta:hover {
+            background: white;
+            color: black;
+        }
+
+        /* ═══ MOBILE HAMBURGER ═══ */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            z-index: 60;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--rich-black);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        #main-nav.nav-dark .hamburger span {
+            background: white;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 90px 24px 32px;
+            background: rgba(245, 245, 247, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 45;
+            flex-direction: column;
+            gap: 4px;
+            transform: translateY(-100%);
+            transition: transform 0.35s ease;
+        }
+
+        .mobile-menu.open {
+            transform: translateY(0);
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 14px 16px;
+            color: #555;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 12px;
+            transition: background 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(0, 0, 0, 0.04);
+        }
+
+        .mobile-menu .mobile-menu-cta {
+            display: block;
+            text-align: center;
+            margin-top: 12px;
+            padding: 16px;
+            background: var(--rich-black);
+            color: white;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        #main-nav.nav-dark ~ .mobile-menu {
+            background: rgba(8, 8, 10, 0.98);
+            border-bottom-color: rgba(255, 255, 255, 0.05);
+        }
+
+        #main-nav.nav-dark ~ .mobile-menu a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        #main-nav.nav-dark ~ .mobile-menu a:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        #main-nav.nav-dark ~ .mobile-menu .mobile-menu-cta {
+            background: white;
+            color: black;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+        }
+
+        /* ═══ FADE-UP ═══ */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        /* ═══ HERO ═══ */
+        .faq-hero {
+            background: var(--porcelain);
+            padding-top: 140px;
+            padding-bottom: 80px;
+            padding-left: 24px;
+            padding-right: 24px;
+            text-align: center;
+        }
+
+        .faq-hero-tagline {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--purple);
+            margin-bottom: 20px;
+        }
+
+        .faq-hero-title {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: var(--rich-black);
+            margin: 0 0 20px 0;
+        }
+
+        .faq-hero-sub {
+            font-size: clamp(1rem, 1.8vw, 1.2rem);
+            color: #777;
+            font-weight: 300;
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ═══ FAQ SECTION ═══ */
+        .faq-section {
+            background: var(--porcelain);
+            padding: 80px 24px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-category-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--purple);
+            margin-top: 48px;
+            margin-bottom: 8px;
+        }
+
+        .faq-category-title:first-child {
+            margin-top: 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--rich-black);
+            user-select: none;
+        }
+
+        .faq-arrow {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+            color: #999;
+        }
+
+        .faq-item.open .faq-arrow {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            color: #666;
+            font-weight: 300;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+            padding-bottom: 20px;
+        }
+
+        /* ═══ CTA SECTION ═══ */
+        .faq-cta-section {
+            background: #08080A;
+            padding: 100px 24px;
+            text-align: center;
+        }
+
+        .faq-cta-section h2 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 800;
+            color: white;
+            letter-spacing: -0.03em;
+            margin: 0 0 16px 0;
+        }
+
+        .faq-cta-section p {
+            color: #666;
+            font-size: 1rem;
+            font-weight: 300;
+            margin: 0 0 40px 0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: black;
+            padding: 16px 32px;
+            border-radius: 100px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-outline-white {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 16px 32px;
+            border-radius: 100px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .btn-outline-white:hover {
+            border-color: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        /* ═══ FOOTER ═══ */
+        .site-footer {
+            background: #08080A;
+            color: white;
+            padding: 80px 24px 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .footer-col-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-brand-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand-tagline {
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 4px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 40px;
+            margin-top: 60px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-bottom-copy {
+            color: #444;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom-links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ═══ FLOATING EMAIL BUTTON ═══ */
+        .floating-email {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 999;
+            background: #8A2BE2;
+            color: white;
+            padding: 14px 20px;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 24px rgba(138, 43, 226, 0.35);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .floating-email:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(138, 43, 226, 0.45);
+        }
+
+        @media (max-width: 768px) {
+            .floating-email span {
+                display: none;
+            }
+
+            .floating-email {
+                padding: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="noise-overlay"></div>
+
+    <!-- ═══ NAVBAR ═══ -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-6 md:px-8 py-5 flex justify-between items-center bg-[#F5F5F7]/80 backdrop-blur-xl border-b border-black/5"
+        id="main-nav">
+        <a href="index.html" class="nav-logo text-2xl font-bold tracking-tighter no-underline"><img src="logokairosok.png" alt="Kairos" style="height:48px;width:auto;display:block;"></a>
+
+        <div class="nav-links hidden md:flex gap-8 text-sm font-medium tracking-wide" style="align-items:center;">
+            <a href="chi-siamo.html">Chi siamo</a>
+            <div class="nav-dropdown">
+                <span>Che attività hai? ▾</span>
+                <div class="nav-dropdown-menu">
+                    <div class="nav-dropdown-inner">
+                        <a href="centro-estetico.html">Centro Estetico &amp; Parrucchiere</a>
+                        <a href="studio-medico.html">Studio Medico &amp; Dentistico</a>
+                        <a href="ristorazione.html">Ristorazione &amp; Food</a>
+                    </div>
+                </div>
+            </div>
+            <a href="integrazioni.html">App</a>
+            <a href="prezzi.html">Prezzi</a>
+            <a href="#" class="!text-black font-bold">FAQ</a>
+        </div>
+
+        <div class="nav-actions flex items-center gap-4">
+            <a href="index.html#prenota" class="nav-cta px-5 py-2 rounded-full text-sm font-semibold no-underline">
+                Prenota Call
+            </a>
+            <div class="hamburger" id="hamburger"
+                onclick="this.classList.toggle('open'); document.getElementById('mobile-menu').classList.toggle('open');">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══ MOBILE MENU ═══ -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="chi-siamo.html">Chi siamo</a>
+        <div style="padding-left:12px; display:flex; flex-direction:column; gap:2px;">
+            <span
+                style="padding:10px 16px 6px; color:#999; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em;">Che
+                attività hai?</span>
+            <a href="centro-estetico.html">Centro Estetico &amp; Parrucchiere</a>
+            <a href="studio-medico.html">Studio Medico &amp; Dentistico</a>
+            <a href="ristorazione.html">Ristorazione &amp; Food</a>
+        </div>
+        <a href="integrazioni.html">App</a>
+        <a href="prezzi.html">Prezzi</a>
+        <a href="#" style="font-weight:700; color:var(--rich-black);">FAQ</a>
+        <a href="index.html#prenota" class="mobile-menu-cta"
+            onclick="document.getElementById('hamburger').classList.remove('open'); document.getElementById('mobile-menu').classList.remove('open');">Prenota
+            Call →</a>
+    </div>
+
+    <main>
+
+        <!-- ═══ SEZIONE 1 — HERO ═══ -->
+        <section class="faq-hero">
+            <p class="faq-hero-tagline fade-up">DOMANDE FREQUENTI</p>
+            <h1 class="faq-hero-title fade-up">Hai domande? Abbiamo risposte.</h1>
+            <p class="faq-hero-sub fade-up">Tutto quello che vuoi sapere su Kairòs, prima di iniziare.</p>
+        </section>
+
+        <!-- ═══ SEZIONE 2 — FAQ PER CATEGORIE ═══ -->
+        <section class="faq-section">
+            <div class="faq-container">
+
+                <!-- CATEGORIA 1 — GENERALE -->
+                <p class="faq-category-title fade-up">Generale</p>
+
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>Come funziona Kairòs esattamente?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        Kairòs è un ecosistema di automazione pensato per le PMI italiane. Dopo una call gratuita con il nostro team, configuriamo per te un set di strumenti AI che lavorano al posto tuo: rispondono al telefono, gestiscono gli appuntamenti, recuperano clienti inattivi e molto altro. Tu non tocchi nulla — facciamo tutto noi.
+                    </div>
+                </div>
+
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>Quanto tempo ci vuole per iniziare?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        Dalla call gratuita all'attivazione ci vogliono generalmente 24-48 ore lavorative. Dipende dai servizi scelti e da quanto materiale ci fornisci (informazioni sulla tua attività, orari, listino, ecc.).
+                    </div>
+                </div>
+
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>Devo sapere qualcosa di tecnologia?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        Assolutamente no. Gestiamo noi ogni aspetto tecnico. Quello che ti chiediamo è solo di dedicarci 20 minuti per raccontarci come funziona la tua attività.
+                    </div>
+                </div>
+
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>Funziona per qualsiasi tipo di attività?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        Principalmente lavoriamo con PMI nei settori estetica e benessere, sanità privata, ristorazione e food. Se hai un'attività diversa, scrivici e valutiamo insieme.
+                    </div>
+                </div>
+
+                <!-- CATEGORIA 2 — AI & QUALITÀ -->
+                <p class="faq-category-title fade-up">AI &amp; Qualità</p>
+
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>Come risponde l'AI ai miei clienti? Cosa dice esattamente?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        L'AI risponde sulla base di un "profilo" che costruiamo insieme durante la configurazione: i tuoi orari, i tuoi servizi, le tue regole. Puoi ascoltare e approvare ogni risposta tipo prima che vada live. Puoi anche clonare la tua voce per le chiamate.
+                    </div>
+                </div>
+
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>E se l'AI sbaglia qualcosa?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        L'AI è configurata con margini di sicurezza: se non sa rispondere a qualcosa, passa la conversazione a te o lascia un messaggio. Non inventa informazioni. Inoltre monitori tutto tramite il tuo canale Telegram personale.
+                    </div>
+                </div>
+
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>È diverso da un semplice chatbot?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        Sì, molto. Un chatbot standard risponde a domande fisse con risposte preimpostate. Il sistema Kairòs ragiona in modo contestuale: capisce la richiesta, legge la tua agenda in tempo reale, prende appuntamenti, modifica prenotazioni e si comporta come un assistente umano.
+                    </div>
+                </div>
+
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>Posso personalizzare le risposte?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        Sì. Durante la configurazione definiamo insieme il tono di voce, le informazioni da dare, gli scenari da gestire. Il sistema è completamente adattato alla tua attività.
+                    </div>
+                </div>
+
+                <!-- CATEGORIA 3 — TECNICO -->
+                <p class="faq-category-title fade-up">Tecnico</p>
+
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>Si integra con i programmi che uso già?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        Ci integriamo con oltre 1.300 applicazioni tramite automazioni (vedi la pagina App). Calendario Google, Calendly, WhatsApp Business, gestionali di settore, e molti altri. Contattaci per verificare la tua specifica.
+                    </div>
+                </div>
+
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>Funziona dal mio smartphone?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        Sì. Puoi monitorare tutto dal tuo Telegram: prenotazioni, richieste, notifiche. Non hai bisogno di installare nulla di speciale.
+                    </div>
+                </div>
+
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>Devo cambiare il mio numero di telefono?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        No. Utilizziamo un numero dedicato per il servizio di risposta AI, che può essere configurato come numero principale o come numero di riserva quando sei occupato.
+                    </div>
+                </div>
+
+                <!-- CATEGORIA 4 — PREZZI & CONTRATTO -->
+                <p class="faq-category-title fade-up">Prezzi &amp; Contratto</p>
+
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>Ci sono costi nascosti?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        No. Il prezzo che vedi su kairos-24.com/prezzi.html è quello che paghi. Per i servizi una tantum (sito web, menu digitale) è un singolo pagamento. Per l'Ecosistema Completo il costo è fisso in base al periodo scelto.
+                    </div>
+                </div>
+
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>Posso cambiare piano o disdire?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        Sì, in qualsiasi momento. Non ci sono penali o contratti vincolanti a lungo termine. Puoi cambiare periodo di fatturazione o interrompere il servizio con un semplice avviso.
+                    </div>
+                </div>
+
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>Come si paga?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        Ti invieremo le istruzioni dettagliate dopo la call gratuita, prima di iniziare qualsiasi lavoro.
+                    </div>
+                </div>
+
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>Il sito web è mio se disdico?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        Sì. Il sito web (se acquistato come servizio una tantum) è di tua proprietà. Il dominio kairos-24.com rimane il nostro, il tuo sito sarà sul tuo dominio personale.
+                    </div>
+                </div>
+
+                <!-- CATEGORIA 5 — SUPPORTO -->
+                <p class="faq-category-title fade-up">Supporto</p>
+
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>Chi mi aiuta se ho un problema?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        Hai un canale Telegram diretto con il nostro team. Rispondiamo entro poche ore in orario lavorativo (lunedì-venerdì 9:00-18:00).
+                    </div>
+                </div>
+
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>C'è un periodo di prova?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        Non offriamo un periodo di prova formale, ma la call gratuita di 20 minuti ti dà già un'idea chiara di cosa possiamo fare per la tua attività. Non ti chiediamo nessun impegno prima di quella call.
+                    </div>
+                </div>
+
+                <div class="faq-item fade-up">
+                    <div class="faq-question">
+                        <span>Cosa succede ai miei dati?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        I dati della tua attività e dei tuoi clienti sono trattati nel pieno rispetto del GDPR. Non vendiamo, non condividiamo e non utilizziamo i tuoi dati per altri scopi. Puoi leggere la nostra Privacy Policy per tutti i dettagli.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ═══ SEZIONE 3 — CTA FINALE ═══ -->
+        <section class="faq-cta-section">
+            <h2 class="fade-up">Non hai trovato risposta?</h2>
+            <p class="fade-up">Scrivici direttamente. Ti risponderemo entro poche ore in orario lavorativo.</p>
+            <div class="cta-buttons fade-up">
+                <a href="index.html#prenota" class="btn-white">
+                    Prenota una Call Gratuita
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="mailto:business@kairos-24.it" class="btn-outline-white">
+                    Scrivici a business@kairos-24.it
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+
+            <!-- Colonna 1 — Brand -->
+            <div class="footer-col">
+                <div class="footer-brand-logo"><img src="logokairosok.png" alt="Kairos" style="height:60px;width:auto;display:block;"></div>
+                <p class="footer-brand-tagline">Automazione per l'Italia che lavora.</p>
+                <a href="mailto:business@kairos-24.it" style="color:#666; display:block; margin-top:12px; font-size:0.875rem;">business@kairos-24.it</a>
+            </div>
+
+            <!-- Colonna 2 — Esplora -->
+            <div class="footer-col">
+                <p class="footer-col-title">Esplora</p>
+                <a href="index.html">Home</a>
+                <a href="chi-siamo.html">Chi siamo</a>
+                <a href="prezzi.html">Prezzi</a>
+                <a href="faq.html">FAQ</a>
+                <a href="integrazioni.html">App</a>
+            </div>
+
+            <!-- Colonna 3 — Settori -->
+            <div class="footer-col">
+                <p class="footer-col-title">Settori</p>
+                <a href="centro-estetico.html">Centro Estetico</a>
+                <a href="studio-medico.html">Studio Medico</a>
+                <a href="ristorazione.html">Ristorazione</a>
+            </div>
+
+            <!-- Colonna 4 — Contatti -->
+            <div class="footer-col">
+                <p class="footer-col-title">Contatti</p>
+                <a href="mailto:business@kairos-24.it">business@kairos-24.it</a>
+                <a href="index.html#prenota">Prenota una call →</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <span class="footer-bottom-copy">© 2026 Kairòs Automation. Tutti i diritti riservati.</span>
+            <div class="footer-bottom-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="https://www.iubenda.com/privacy-policy/49016120/cookie-policy"
+                    class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy">Cookie Policy</a>
+                <script type="text/javascript">(function (w, d) { var loader = function () { var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s, tag); }; if (w.addEventListener) { w.addEventListener("load", loader, false); } else if (w.attachEvent) { w.attachEvent("onload", loader); } else { w.onload = loader; } })(window, document);</script>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══ FLOATING EMAIL BUTTON ═══ -->
+    <a href="mailto:business@kairos-24.it" class="floating-email" title="Scrivici via email">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+        <span>Scrivici</span>
+    </a>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // ─── FADE UP ELEMENTS ───
+        gsap.utils.toArray('.fade-up').forEach(el => {
+            gsap.to(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 88%',
+                    toggleActions: 'play none none none'
+                },
+                opacity: 1,
+                y: 0,
+                duration: 0.9,
+                ease: 'power3.out'
+            });
+        });
+
+        // ─── NAV DARK TOGGLE (CTA section) ───
+        const nav = document.getElementById('main-nav');
+        const darkSections = document.querySelectorAll('.faq-cta-section, .site-footer');
+        darkSections.forEach(section => {
+            ScrollTrigger.create({
+                trigger: section,
+                start: 'top 60px',
+                end: 'bottom 60px',
+                onEnter: () => {
+                    nav.classList.add('nav-dark');
+                    nav.style.borderColor = 'rgba(255,255,255,0.05)';
+                    nav.style.background = 'rgba(8,8,10,0.8)';
+                },
+                onLeave: () => {
+                    nav.classList.remove('nav-dark');
+                    nav.style.borderColor = '';
+                    nav.style.background = '';
+                },
+                onEnterBack: () => {
+                    nav.classList.add('nav-dark');
+                    nav.style.borderColor = 'rgba(255,255,255,0.05)';
+                    nav.style.background = 'rgba(8,8,10,0.8)';
+                },
+                onLeaveBack: () => {
+                    nav.classList.remove('nav-dark');
+                    nav.style.borderColor = '';
+                    nav.style.background = '';
+                },
+            });
+        });
+
+        // ─── ACCORDION ───
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const isOpen = item.classList.contains('open');
+                // chiudi tutti
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                // apri questo se era chiuso
+                if (!isOpen) item.classList.add('open');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
