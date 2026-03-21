@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://kairos-24.com/ristorazione.html" />
-    <title>Kairòs - Ristorazione & Food</title>
+    <link rel="canonical" href="https://kairos-24.com/agenzia-immobiliare.html" />
+    <title>Kairòs — AI per Agenzie Immobiliari</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -191,12 +191,28 @@
             border-color: rgba(138, 43, 226, 0.2);
             box-shadow: 0 8px 40px rgba(138,43,226,0.1);
         }
+        .solution-card-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .solution-card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: var(--purple-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
         .solution-card h3 {
             font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 16px;
             letter-spacing: -0.01em;
             color: var(--text-dark);
+            margin: 0;
         }
         .solution-card h3 span { color: var(--purple); }
         .solution-card p {
@@ -204,12 +220,13 @@
             line-height: 1.8;
             color: var(--text-muted);
             font-weight: 300;
+            margin: 0;
         }
         .solution-card strong { color: var(--text-dark); font-weight: 600; }
 
         /* ── Telegram/chat mockup ── */
         .telegram-phone {
-            max-width: 420px;
+            max-width: 440px;
             margin: 0 auto;
             background: #ffffff;
             border-radius: 24px;
@@ -243,14 +260,13 @@
         .telegram-status { font-size: 0.7rem; color: var(--text-muted); }
         .telegram-chat {
             padding: 20px;
-            min-height: 420px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             background: var(--porcelain);
         }
         .tg-msg {
-            max-width: 85%;
+            max-width: 88%;
             padding: 12px 16px;
             border-radius: 16px 16px 16px 4px;
             background: #ffffff;
@@ -262,9 +278,14 @@
             opacity: 0;
             transform: translateY(15px) scale(0.95);
         }
+        .tg-msg.tg-user {
+            align-self: flex-end;
+            border-radius: 16px 16px 4px 16px;
+            background: var(--purple-dim);
+            border-color: rgba(138,43,226,0.15);
+        }
         .tg-msg .tg-time { display: block; text-align: right; font-size: 0.6rem; color: var(--text-muted); margin-top: 6px; }
         .tg-msg .highlight { color: var(--purple); font-weight: 600; }
-        .tg-msg .alert { color: #E53935; font-weight: 600; }
         .tg-msg .green { color: #2E7D32; font-weight: 600; }
 
         /* ── Value section ── */
@@ -279,15 +300,34 @@
             transform: translateY(30px);
         }
         .value-title .accent { color: var(--purple); }
-        .value-text {
-            font-size: clamp(1rem, 1.6vw, 1.15rem);
-            color: var(--text-muted);
-            font-weight: 300;
-            line-height: 1.9;
+        .value-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
             opacity: 0;
             transform: translateY(30px);
         }
-        .value-text strong { color: var(--text-dark); font-weight: 600; }
+        .value-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.75;
+        }
+        .value-list li strong { color: var(--text-dark); font-weight: 600; }
+        .value-bullet {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--purple);
+            flex-shrink: 0;
+            margin-top: 8px;
+        }
 
         /* ── Final CTA ── */
         .final-statement {
@@ -345,6 +385,7 @@
             .split-with { border-left: none; border-top: 3px solid var(--purple); }
             .split-side { padding: 40px 28px; }
             .solution-card { padding: 32px 24px; }
+            .solution-card-header { flex-direction: column; align-items: flex-start; gap: 12px; }
         }
     </style>
 </head>
@@ -399,14 +440,22 @@
     ══════════════════════════════════ -->
     <section class="sec" style="background:#F5F5F7; padding-top:140px; padding-bottom:96px; text-align:center;">
         <div class="sec-inner">
-            <div class="hero-badge fade-up"><span>✦</span> Per Ristoranti, Pizzerie &amp; Bar</div>
+            <div class="hero-badge fade-up"><span>✦</span> Agenzia Immobiliare</div>
             <h1 class="hero-title fade-up" id="hero-title">
-                Il telefono squilla proprio mentre la sala è piena. <span class="hl">Rispondi o servi i clienti al tavolo?</span>
+                Il tuo prossimo cliente non aspetta. <span class="hl">Il tuo concorrente neanche.</span>
             </h1>
             <p class="hero-subtitle fade-up">
-                Automatizza prenotazioni, menu e marketing al costo di
-                <strong>meno di un gelato al giorno.</strong>
+                AI che gestisce lead, appuntamenti e follow-up <strong>24 ore su 24.</strong>
+                Il primo agente a rispondere vince il mandato.
             </p>
+            <div class="fade-up" style="margin-top:48px;">
+                <a href="index.html#prenota" class="cta-btn">
+                    Richiedi una Demo per Agenzie
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
             <div class="scroll-hint fade-up">
                 <svg width="24" height="40" viewBox="0 0 24 40" fill="none" stroke="#AAAAAA" stroke-width="1.5" stroke-linecap="round">
                     <rect x="8" y="1" width="8" height="14" rx="4" />
@@ -425,43 +474,45 @@
         <div class="sec-inner">
             <div style="text-align:center; margin-bottom:64px;">
                 <p class="sec-label fade-up">IL CONFRONTO</p>
-                <h2 class="sec-title fade-up" style="margin:0 auto;">Un sabato sera tipo: <span class="hl">senza e con Kairòs</span></h2>
+                <h2 class="sec-title fade-up" style="margin:0 auto;">Un lead arriva alle 21:00. <span class="hl">Senza e con Kairòs.</span></h2>
             </div>
             <div class="split-container fade-up">
                 <div class="split-side split-without">
                     <div class="split-label"><span class="dot"></span> Senza Kairòs</div>
-                    <div class="split-item"><span class="split-icon">📵</span>
-                        <div class="split-text">Il telefono squilla 15 volte durante il servizio. Ne rispondi a 3.</div>
+                    <div class="split-item">
+                        <span class="split-icon">⏳</span>
+                        <div class="split-text">Il lead arriva fuori orario. Risponderai domani mattina — ma il cliente si è già rivolto a un'altra agenzia.</div>
                     </div>
-                    <div class="split-item"><span class="split-icon">📋</span>
-                        <div class="split-text">Menu stampato: ristampi ogni volta che cambi un prezzo o un piatto.</div>
+                    <div class="split-item">
+                        <span class="split-icon">📋</span>
+                        <div class="split-text">Follow-up manuali che si dimenticano: l'agente ha dieci trattative aperte e nessun sistema automatico di ricontatto.</div>
                     </div>
-                    <div class="split-item"><span class="split-icon">👻</span>
-                        <div class="split-text">Non sai chi sono i tuoi clienti. Nessun database, nessun modo di ricontattarli.</div>
+                    <div class="split-item">
+                        <span class="split-icon">🏠</span>
+                        <div class="split-text">Valutazioni preliminari fatte a mano, ogni volta. Ore di lavoro per rispondere a richieste che non si concretizzeranno.</div>
                     </div>
-                    <div class="split-item"><span class="split-icon">⭐</span>
-                        <div class="split-text">Un cliente insoddisfatto lascia 1 stella su Google. Non ne sai nulla fino a troppo tardi.</div>
-                    </div>
-                    <div class="split-item"><span class="split-icon">💸</span>
-                        <div class="split-text">Paghi commissioni ai portali per ogni coperto prenotato.</div>
+                    <div class="split-item">
+                        <span class="split-icon">📅</span>
+                        <div class="split-text">Appuntamenti mancati per mancata risposta veloce: il cliente che non ottiene conferma entro pochi minuti prenota con chi risponde prima.</div>
                     </div>
                 </div>
                 <div class="split-side split-with">
                     <div class="split-label"><span class="dot"></span> Con Kairòs</div>
-                    <div class="split-item"><span class="split-icon">✦</span>
-                        <div class="split-text">L'AI risponde, prenota e registra i clienti. Tu ti concentri sulla sala.</div>
+                    <div class="split-item">
+                        <span class="split-icon">✦</span>
+                        <div class="split-text">Risposta immediata in meno di 60 secondi, H24, su WhatsApp, Telegram e chat web. Nessun lead lasciato senza risposta.</div>
                     </div>
-                    <div class="split-item"><span class="split-icon">✦</span>
-                        <div class="split-text">Menu QR Code: aggiorni prezzi e piatti in un click, con foto che vendono.</div>
+                    <div class="split-item">
+                        <span class="split-icon">✦</span>
+                        <div class="split-text">Qualificazione automatica: budget, zona, tempistiche e tipo di immobile raccolti prima che l'agente entri in gioco.</div>
                     </div>
-                    <div class="split-item"><span class="split-icon">✦</span>
-                        <div class="split-text">Ogni prenotazione crea un contatto nel TUO database proprietario.</div>
+                    <div class="split-item">
+                        <span class="split-icon">✦</span>
+                        <div class="split-text">Stima preliminare per zona fornita in automatico, basata sui dati raccolti durante la conversazione.</div>
                     </div>
-                    <div class="split-item"><span class="split-icon">✦</span>
-                        <div class="split-text">Dopo cena, il sistema chiede "ti sei trovato bene?" e intercetta i problemi.</div>
-                    </div>
-                    <div class="split-item"><span class="split-icon">✦</span>
-                        <div class="split-text">Zero commissioni. Paghi il servizio, non il coperto.</div>
+                    <div class="split-item">
+                        <span class="split-icon">✦</span>
+                        <div class="split-text">L'AI gestisce l'agenda e prenota le visite autonomamente, inviando promemoria al cliente e all'agente.</div>
                     </div>
                 </div>
             </div>
@@ -476,101 +527,170 @@
         <div class="sec-inner">
             <div style="text-align:center; margin-bottom:64px;">
                 <p class="sec-label fade-up">COME FUNZIONA</p>
-                <h2 class="sec-title fade-up" style="margin:0 auto;">Come funziona, <span class="hl">nel concreto.</span></h2>
-                <p class="sec-sub fade-up" style="margin:12px auto 0;">Tre strumenti che riempiono la tua sala e proteggono la tua reputazione.</p>
+                <h2 class="sec-title fade-up" style="margin:0 auto;">Quattro funzioni. <span class="hl">Un agente AI.</span></h2>
+                <p class="sec-sub fade-up" style="margin:12px auto 0;">Tutto ciò che serve per non perdere un solo lead immobiliare.</p>
             </div>
 
             <div class="solution-card">
-                <h3>Sito Web &amp; Menu Digitale — <span>Intelligente</span></h3>
+                <div class="solution-card-header">
+                    <div class="solution-card-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.5 12.34a19.79 19.79 0 0 1-3-8.59A2 2 0 0 1 3.44 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <h3>Risposta immediata ai lead — <span>in meno di 60 secondi</span></h3>
+                </div>
                 <p>
-                    Sviluppiamo <strong>il sito web del tuo ristorante e un Menu QR Code evoluto.</strong>
-                    Elimina i costi di ristampa cartacea. Inserisci foto dei piatti (che aumentano lo scontrino),
-                    aggiorna i prezzi in un click e, se vuoi, <strong>permetti ai clienti di ordinare e pagare direttamente dal tavolo.</strong>
+                    Ogni richiesta su WhatsApp, Telegram o chat web riceve una risposta automatica
+                    <strong>entro un minuto, anche alle 23:00 di sabato.</strong>
+                    L'AI si presenta come assistente dell'agenzia, raccoglie le prime informazioni
+                    e mantiene il lead "caldo" fino a quando l'agente è disponibile.
+                    Nessun lead perso per mancanza di presidio.
                 </p>
             </div>
 
             <div class="solution-card">
-                <h3>Prenotazioni &amp; Database — <span>Il Tuo Tesoro</span></h3>
+                <div class="solution-card-header">
+                    <div class="solution-card-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    </div>
+                    <h3>Qualificazione automatica — <span>solo lead seri</span></h3>
+                </div>
                 <p>
-                    Quando un cliente chiama per prenotare, <strong>l'AI risponde, controlla i tavoli e registra Nome e Numero.</strong>
-                    Finalmente costruisci un <strong>database proprietario di clienti</strong> da ricontattare per eventi,
-                    serate speciali o promozioni mirate.
+                    Il sistema conduce una conversazione strutturata: <strong>budget disponibile, zona di preferenza,
+                    tempistiche di acquisto o locazione, tipologia di immobile cercata.</strong>
+                    Quando l'agente riprende in mano il lead, ha già davanti un profilo completo del potenziale acquirente.
+                    Niente più telefonate esplorative a vuoto: l'AI filtra, l'agente chiude.
                 </p>
             </div>
 
             <div class="solution-card">
-                <h3>Reputazione — <span>Google Maps</span></h3>
+                <div class="solution-card-header">
+                    <div class="solution-card-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <h3>Stima preliminare — <span>per zona e tipologia</span></h3>
+                </div>
                 <p>
-                    Dopo la cena, il sistema invia un messaggio: <strong>"Ti sei trovato bene?".</strong>
-                    Se sì, li invita a lasciarti <strong>5 stelle su Google</strong> (fondamentale per essere primi nelle ricerche).
-                    Se no, <strong>intercetta la lamentela privatamente,</strong> salvando la tua reputazione pubblica.
+                    Sulla base dei parametri raccolti — zona, metratura, tipologia, piano —
+                    il sistema fornisce al cliente una <strong>stima orientativa di mercato</strong>,
+                    costruita sui dati aggiornati dell'agenzia.
+                    Un servizio di valore immediato che aumenta la fiducia del cliente
+                    e riduce il tempo perso su immobili fuori budget.
+                </p>
+            </div>
+
+            <div class="solution-card">
+                <div class="solution-card-header">
+                    <div class="solution-card-icon">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
+                    <h3>Prenotazione visite — <span>agenda gestita in automatico</span></h3>
+                </div>
+                <p>
+                    L'AI verifica la disponibilità dell'agente su Google Calendar e propone
+                    <strong>due o tre fasce orarie in tempo reale.</strong>
+                    Il cliente sceglie, la visita viene confermata istantaneamente con notifica a entrambe le parti.
+                    Un promemoria automatico viene inviato 24 ore prima.
+                    <strong>Zero telefonate per accordarsi su data e ora.</strong>
                 </p>
             </div>
         </div>
     </section>
 
     <!-- ══════════════════════════════════
-         SECTION 4 — TELEGRAM MOCKUP
+         SECTION 4 — CHAT MOCKUP
          bg: #FFFFFF (white)
     ══════════════════════════════════ -->
     <section class="sec" style="background:#FFFFFF;">
         <div class="sec-inner">
             <div style="text-align:center; margin-bottom:60px;">
-                <p class="sec-label fade-up">REPORT AUTOMATICO</p>
-                <h2 class="sec-title fade-up" style="margin:0 auto;">Il tuo ristorante, <span class="hl">in un messaggio.</span></h2>
-                <p class="sec-sub fade-up" style="margin:12px auto 0;">Report automatico. Ogni settimana. Senza fare nulla.</p>
+                <p class="sec-label fade-up">CONVERSAZIONE REALE</p>
+                <h2 class="sec-title fade-up" style="margin:0 auto;">Dalla richiesta alla visita, <span class="hl">in pochi messaggi.</span></h2>
+                <p class="sec-sub fade-up" style="margin:12px auto 0;">Così risponde Kairòs alle 21:30 di domenica, quando il suo ufficio è chiuso.</p>
             </div>
 
             <div class="telegram-phone" id="tg-phone">
                 <div class="telegram-topbar">
                     <div class="telegram-avatar">K</div>
                     <div>
-                        <div class="telegram-name">Kairòs Analista</div>
+                        <div class="telegram-name">Kairòs — Assistente Agenzia</div>
                         <div class="telegram-status">online</div>
                     </div>
                 </div>
                 <div class="telegram-chat" id="tg-chat">
-                    <div class="tg-msg">
-                        Chef, ecco il report settimanale! 👋
-                        <span class="tg-time">20:00</span>
+
+                    <div class="tg-msg tg-user">
+                        Buonasera, ho visto l'annuncio del trilocale in Via Roma. È ancora disponibile?
+                        <span class="tg-time">21:31</span>
                     </div>
+
                     <div class="tg-msg">
-                        📊 <span class="highlight">Coperti:</span> 320 questa settimana (+12% rispetto alla scorsa).
-                        Scontrino medio: <span class="highlight">38€</span>.
-                        <span class="tg-time">20:00</span>
+                        Buonasera. Sì, il trilocale è ancora disponibile. 🏠<br>
+                        Prima di fissare la visita, Le pongo alcune domande rapide per capire al meglio le Sue esigenze. Qual è la Sua fascia di budget?
+                        <span class="tg-time">21:31</span>
                     </div>
+
+                    <div class="tg-msg tg-user">
+                        Intorno ai 250.000 euro.
+                        <span class="tg-time">21:32</span>
+                    </div>
+
                     <div class="tg-msg">
-                        ⭐ <span class="highlight">Reputazione:</span> 8 nuove recensioni a 5 stelle su Google. Media
-                        attuale: <span class="green">4.7★</span>. Ho intercettato 2 lamentele privatamente.
-                        <span class="tg-time">20:01</span>
+                        Ottimo. Sta cercando per <span class="highlight">acquisto</span> o per locazione? E ha preferenze per piano o esposizione?
+                        <span class="tg-time">21:32</span>
                     </div>
+
+                    <div class="tg-msg tg-user">
+                        Acquisto. Preferibilmente piano alto con balcone.
+                        <span class="tg-time">21:33</span>
+                    </div>
+
                     <div class="tg-msg">
-                        📲 <span class="highlight">Database:</span> 45 nuovi contatti acquisiti. Ho inviato una promo
-                        "Serata Pesce" ai clienti che non tornano da 30 giorni. 12 hanno già prenotato.
-                        <span class="tg-time">20:01</span>
+                        Perfetto. In base alla zona, alla metratura e alle caratteristiche dell'immobile, il prezzo richiesto è in linea con i valori attuali di mercato per quella tipologia.<br><br>
+                        Quando sarebbe disponibile per una visita? Le propongo <span class="highlight">martedì 25</span> o <span class="highlight">mercoledì 26 marzo</span>, alle 10:00 o alle 15:00. 🗓️
+                        <span class="tg-time">21:33</span>
                     </div>
+
+                    <div class="tg-msg tg-user">
+                        Martedì 25 alle 10 va benissimo.
+                        <span class="tg-time">21:34</span>
+                    </div>
+
                     <div class="tg-msg">
-                        La sala si riempie da sola. Tu pensa alla cucina. 🚀
-                        <span class="tg-time">20:02</span>
+                        Confermato. Visita fissata per <span class="highlight">martedì 25 marzo alle 10:00</span>.<br>
+                        Riceverà un promemoria 24 ore prima. Un nostro agente La incontrerà direttamente in loco. Ci vediamo lì. 👍
+                        <span class="tg-time">21:34</span>
                     </div>
+
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ══════════════════════════════════
-         SECTION 5 — VALUE
+         SECTION 5 — VALORE
          bg: #F5F5F7 (porcelain)
     ══════════════════════════════════ -->
     <section class="sec" style="background:#F5F5F7;">
         <div class="sec-inner-narrow">
-            <h2 class="value-title">Il tuo tavolo, <span class="accent">il tuo guadagno.</span></h2>
-            <p class="value-text">
-                Basta pagare commissioni per ogni coperto ai portali di prenotazione.
-                <strong>Con Kairòs paghi solo il servizio,</strong> indipendentemente da quanti clienti porti.
-                E ricorda: il prezzo e le regole (es. sconti per far tornare clienti assenti da 3 mesi)
-                <strong>li decidi sempre e solo tu.</strong>
-            </p>
+            <h2 class="value-title">Un ecosistema Immobiliare <span class="accent">All-in-One.</span></h2>
+            <ul class="value-list">
+                <li>
+                    <span class="value-bullet"></span>
+                    <span><strong>Canali multipli unificati:</strong> WhatsApp Business, Telegram, chat sul sito web, email — tutto gestito da un unico sistema, senza dispersione.</span>
+                </li>
+                <li>
+                    <span class="value-bullet"></span>
+                    <span><strong>Integrazioni CRM immobiliare:</strong> compatibile con Gestionale.re, HubSpot, Pipedrive e i principali CRM di settore. I lead qualificati entrano direttamente nel Suo flusso di lavoro.</span>
+                </li>
+                <li>
+                    <span class="value-bullet"></span>
+                    <span><strong>Firma digitale integrata:</strong> raccoglie il consenso al trattamento dati e gestisce i pre-contratti tramite Yousign o DocuSign, direttamente in chat.</span>
+                </li>
+                <li>
+                    <span class="value-bullet"></span>
+                    <span><strong>Sincronizzazione calendario:</strong> integrazione nativa con Google Calendar per la gestione delle visite — nessuna doppia prenotazione, nessun appuntamento dimenticato.</span>
+                </li>
+            </ul>
         </div>
     </section>
 
@@ -581,36 +701,43 @@
     <section class="sec" style="background:#FFFFFF;">
         <div style="max-width:800px; margin:0 auto;">
             <p class="sec-label fade-up">Domande Frequenti</p>
-            <h2 class="sec-title fade-up">Hai domande?</h2>
-            <p class="sec-sub fade-up" style="margin-bottom:48px;">Le risposte più comuni per ristoranti e attività food.</p>
+            <h2 class="sec-title fade-up">Domande sul sistema.</h2>
+            <p class="sec-sub fade-up" style="margin-bottom:48px;">Le risposte alle domande più comuni delle agenzie immobiliari.</p>
             <div class="sector-faq-list">
                 <div class="sector-faq-item fade-up">
                     <div class="sector-faq-q" onclick="this.parentElement.classList.toggle('open')">
-                        <span>L'AI può prendere prenotazioni per gruppi o eventi speciali?</span>
+                        <span>Su quali canali funziona?</span>
                         <svg style="width:20px;height:20px;flex-shrink:0;transition:transform 0.3s;color:#aaa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                     </div>
-                    <div class="sector-faq-a">Sì. Configuriamo il sistema per gestire prenotazioni singole, gruppi e richieste per eventi speciali. Per i gruppi oltre una certa dimensione puoi impostare un flusso di conferma manuale così da valutare ogni caso.</div>
+                    <div class="sector-faq-a">Il sistema opera su WhatsApp Business, Telegram, widget di chat sul sito web ed email. Tutti i canali sono gestiti centralmente: l'agente vede ogni conversazione in un'unica dashboard, senza dover monitorare piattaforme separate.</div>
                 </div>
                 <div class="sector-faq-item fade-up">
                     <div class="sector-faq-q" onclick="this.parentElement.classList.toggle('open')">
-                        <span>Si integra con TheFork o altri sistemi di prenotazione?</span>
+                        <span>Può davvero qualificare i lead automaticamente?</span>
                         <svg style="width:20px;height:20px;flex-shrink:0;transition:transform 0.3s;color:#aaa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                     </div>
-                    <div class="sector-faq-a">Ci integriamo con oltre 1.300 applicazioni tra cui i principali sistemi di prenotazione per ristoranti. Scrivi a business@kairos-24.it con il tuo sistema attuale e verifichiamo la compatibilità.</div>
+                    <div class="sector-faq-a">Sì. Il sistema conduce una conversazione guidata in linguaggio naturale, raccogliendo budget, zona, tempistiche e tipologia di immobile. Il lead arriva all'agente già classificato: chi è pronto a procedere, chi è in fase esplorativa, chi è fuori target. Configuriamo insieme i criteri di qualificazione in base alle esigenze specifiche della Sua agenzia.</div>
                 </div>
                 <div class="sector-faq-item fade-up">
                     <div class="sector-faq-q" onclick="this.parentElement.classList.toggle('open')">
-                        <span>Come funziona il menu digitale con QR code?</span>
+                        <span>Come gestisce le richieste di valutazione immobile?</span>
                         <svg style="width:20px;height:20px;flex-shrink:0;transition:transform 0.3s;color:#aaa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                     </div>
-                    <div class="sector-faq-a">Creiamo un menu digitale elegante, aggiornabile in tempo reale da smartphone. I clienti lo leggono scansionando un QR code — nessuna app da scaricare. Puoi aggiornare prezzi, piatti e promozioni in qualsiasi momento senza costi aggiuntivi.</div>
+                    <div class="sector-faq-a">Per le richieste di valutazione, il sistema raccoglie tutte le informazioni necessarie — indirizzo, metratura, anno di costruzione, piano, stato dell'immobile — e fornisce un'indicazione preliminare di mercato basata sui dati forniti dall'agenzia. La valutazione definitiva viene poi gestita dall'agente, che riceve un briefing completo.</div>
                 </div>
                 <div class="sector-faq-item fade-up">
                     <div class="sector-faq-q" onclick="this.parentElement.classList.toggle('open')">
-                        <span>Posso usarlo per comunicare offerte e promozioni ai clienti?</span>
+                        <span>Si integra con il mio CRM immobiliare?</span>
                         <svg style="width:20px;height:20px;flex-shrink:0;transition:transform 0.3s;color:#aaa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                     </div>
-                    <div class="sector-faq-a">Sì. Il sistema di recupero clienti può inviare messaggi personalizzati con promozioni, menù speciali o eventi — ai clienti che non tornano da un po'. Tutto automatico, senza che tu debba fare nulla.</div>
+                    <div class="sector-faq-a">Ci integriamo con Gestionale.re, HubSpot, Pipedrive e oltre 1.300 applicazioni tramite API e Webhook. Se utilizza un gestionale specifico per agenzie immobiliari, ci contatti all'indirizzo business@kairos-24.it indicando il sistema in uso: verificheremo la compatibilità prima di procedere.</div>
+                </div>
+                <div class="sector-faq-item fade-up">
+                    <div class="sector-faq-q" onclick="this.parentElement.classList.toggle('open')">
+                        <span>Cosa succede se un cliente chiede informazioni troppo specifiche?</span>
+                        <svg style="width:20px;height:20px;flex-shrink:0;transition:transform 0.3s;color:#aaa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                    <div class="sector-faq-a">Il sistema riconosce i limiti della propria competenza e, in caso di domande che richiedono la valutazione di un agente, segnala che un professionista della sua agenzia la ricontatterà a breve — mantenendo il tono professionale e rassicurante. L'agente riceve una notifica immediata con il riepilogo della conversazione.</div>
                 </div>
             </div>
         </div>
@@ -624,15 +751,15 @@
         <div class="sec-inner" style="text-align:center;">
             <p class="sec-label fade-up" style="color:rgba(255,255,255,0.5);">INIZIA ORA</p>
             <h2 class="final-statement fade-up">
-                Riempi la sala e aumenta<br>
-                <span style="color:var(--purple-light);">le recensioni positive.</span>
+                Il primo agente a rispondere<br>
+                <span style="color:var(--purple-light);">vince il mandato.</span>
             </h2>
             <p class="final-sub fade-up" style="margin-top:16px;">
-                I risultati li vedi già dal primo weekend.
+                Kairòs risponde al posto Suo. H24. Ogni giorno.
             </p>
             <div class="mt-14 fade-up">
                 <a href="index.html#prenota" class="cta-btn">
-                    Prenota una Demo per Ristoranti
+                    Prenota una Demo per Agenzie Immobiliari
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
@@ -647,14 +774,45 @@
 <footer style="background-color:#EBEBED;color:var(--rich-black);padding:80px 24px 40px;position:relative;z-index:10;">
     <div style="max-width:1100px;margin:0 auto;">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:48px;margin-bottom:60px;">
-            <div><div style="margin-bottom:10px;"><img src="logokairosok.png" alt="Kairos" style="height:60px;width:auto;display:block;"></div><p style="color:#666;font-size:0.9rem;line-height:1.6;margin-bottom:14px;">Implementiamo l'AI nella tua azienda. Assistenti vocali, CRM e siti web.</p><a href="mailto:business@kairos-24.it" style="color:#555;font-size:0.85rem;text-decoration:none;">business@kairos-24.it</a></div>
-            <div><p style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#555;margin-bottom:18px;">Esplora</p><div style="display:flex;flex-direction:column;gap:12px;"><a href="index.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Home</a><a href="chi-siamo.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Chi siamo</a><a href="faq.html" style="color:#888;font-size:0.88rem;text-decoration:none;">FAQ</a><a href="integrazioni.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Integrazioni</a></div></div>
-            <div><p style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#555;margin-bottom:18px;">Settori</p><div style="display:flex;flex-direction:column;gap:12px;"><a href="centro-estetico.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Centro Estetico &amp; Parrucchiere</a><a href="studio-medico.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Studio Medico &amp; Dentistico</a><a href="ristorazione.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Ristorazione &amp; Food</a><a href="agenzia-immobiliare.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Agenzia Immobiliare</a><a href="studio-legale.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Studio Legale</a></div></div>
-            <div><p style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#555;margin-bottom:18px;">Contatti</p><div style="display:flex;flex-direction:column;gap:12px;"><a href="mailto:business@kairos-24.it" style="color:#888;font-size:0.88rem;text-decoration:none;">business@kairos-24.it</a><a href="index.html#prenota" style="color:#888;font-size:0.88rem;text-decoration:none;">Prenota una call gratuita →</a></div></div>
+            <div>
+                <div style="margin-bottom:10px;"><img src="logokairosok.png" alt="Kairos" style="height:60px;width:auto;display:block;"></div>
+                <p style="color:#666;font-size:0.9rem;line-height:1.6;margin-bottom:14px;">Implementiamo l'AI nella tua azienda. Assistenti vocali, CRM e siti web.</p>
+                <a href="mailto:business@kairos-24.it" style="color:#555;font-size:0.85rem;text-decoration:none;">business@kairos-24.it</a>
+            </div>
+            <div>
+                <p style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#555;margin-bottom:18px;">Esplora</p>
+                <div style="display:flex;flex-direction:column;gap:12px;">
+                    <a href="index.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Home</a>
+                    <a href="chi-siamo.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Chi siamo</a>
+                    <a href="faq.html" style="color:#888;font-size:0.88rem;text-decoration:none;">FAQ</a>
+                    <a href="integrazioni.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Integrazioni</a>
+                </div>
+            </div>
+            <div>
+                <p style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#555;margin-bottom:18px;">Settori</p>
+                <div style="display:flex;flex-direction:column;gap:12px;">
+                    <a href="centro-estetico.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Centro Estetico &amp; Parrucchiere</a>
+                    <a href="studio-medico.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Studio Medico &amp; Dentistico</a>
+                    <a href="ristorazione.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Ristorazione &amp; Food</a>
+                    <a href="agenzia-immobiliare.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Agenzia Immobiliare</a>
+                    <a href="studio-legale.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Studio Legale</a>
+                </div>
+            </div>
+            <div>
+                <p style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#555;margin-bottom:18px;">Contatti</p>
+                <div style="display:flex;flex-direction:column;gap:12px;">
+                    <a href="mailto:business@kairos-24.it" style="color:#888;font-size:0.88rem;text-decoration:none;">business@kairos-24.it</a>
+                    <a href="index.html#prenota" style="color:#888;font-size:0.88rem;text-decoration:none;">Prenota una call gratuita →</a>
+                </div>
+            </div>
         </div>
         <div style="border-top:1px solid rgba(0,0,0,0.1);padding-top:32px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;">
             <p style="color:#444;font-size:0.82rem;margin:0;">© 2026 Kairòs Automation. Tutti i diritti riservati.</p>
-            <div style="display:flex;gap:20px;font-size:0.82rem;"><a href="privacy-policy.html" style="color:#555;text-decoration:none;">Privacy Policy</a><a href="https://www.iubenda.com/privacy-policy/49016120/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed" style="color:#555;text-decoration:none;">Cookie Policy</a><script type="text/javascript">(function(w,d){var loader=function(){var s=d.createElement("script"),tag=d.getElementsByTagName("script")[0];s.src="https://cdn.iubenda.com/iubenda.js";tag.parentNode.insertBefore(s,tag);};if(w.addEventListener){w.addEventListener("load",loader,false);}else if(w.attachEvent){w.attachEvent("onload",loader);}else{w.onload=loader;}})(window,document);</script></div>
+            <div style="display:flex;gap:20px;font-size:0.82rem;">
+                <a href="privacy-policy.html" style="color:#555;text-decoration:none;">Privacy Policy</a>
+                <a href="https://www.iubenda.com/privacy-policy/49016120/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed" style="color:#555;text-decoration:none;">Cookie Policy</a>
+                <script type="text/javascript">(function(w,d){var loader=function(){var s=d.createElement("script"),tag=d.getElementsByTagName("script")[0];s.src="https://cdn.iubenda.com/iubenda.js";tag.parentNode.insertBefore(s,tag);};if(w.addEventListener){w.addEventListener("load",loader,false);}else if(w.attachEvent){w.attachEvent("onload",loader);}else{w.onload=loader;}})(window,document);</script>
+            </div>
         </div>
     </div>
 </footer>
@@ -695,7 +853,7 @@
 
     // Split items slide in
     document.querySelectorAll('.split-item').forEach((item, i) => {
-        gsap.to(item, { scrollTrigger: { trigger: item, start: 'top 88%' }, opacity: 1, x: 0, duration: 0.6, delay: i % 5 * 0.08, ease: 'power3.out' });
+        gsap.to(item, { scrollTrigger: { trigger: item, start: 'top 88%' }, opacity: 1, x: 0, duration: 0.6, delay: i % 4 * 0.08, ease: 'power3.out' });
     });
 
     // Solution cards
@@ -703,15 +861,15 @@
         gsap.to(card, { scrollTrigger: { trigger: card, start: 'top 82%' }, opacity: 1, y: 0, duration: 0.9, delay: i * 0.12, ease: 'power3.out' });
     });
 
-    // Telegram phone & messages
+    // Chat phone & messages
     gsap.to('#tg-phone', { scrollTrigger: { trigger: '#tg-phone', start: 'top 80%' }, opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' });
     document.querySelectorAll('.tg-msg').forEach((msg, i) => {
-        gsap.to(msg, { scrollTrigger: { trigger: '.telegram-chat', start: 'top 75%' }, opacity: 1, y: 0, scale: 1, duration: 0.5, delay: 0.4 + i * 0.6, ease: 'back.out(1.5)' });
+        gsap.to(msg, { scrollTrigger: { trigger: '.telegram-chat', start: 'top 75%' }, opacity: 1, y: 0, scale: 1, duration: 0.5, delay: 0.4 + i * 0.55, ease: 'back.out(1.5)' });
     });
 
     // Value section
     gsap.to('.value-title', { scrollTrigger: { trigger: '.value-title', start: 'top 82%' }, opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' });
-    gsap.to('.value-text', { scrollTrigger: { trigger: '.value-text', start: 'top 85%' }, opacity: 1, y: 0, duration: 0.9, delay: 0.15, ease: 'power3.out' });
+    gsap.to('.value-list', { scrollTrigger: { trigger: '.value-list', start: 'top 85%' }, opacity: 1, y: 0, duration: 0.9, delay: 0.15, ease: 'power3.out' });
 </script>
 
 </body>

@@ -5,19 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://kairos-24.com/integrazioni.html" />
-    <title>Kairòs - Integrazioni | Oltre 1.300 App</title>
+    <title>Kairòs - Integrazioni | Oltre 1.400 App</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script type="text/javascript" src="https://embeds.iubenda.com/widgets/97b32e17-7a35-4bcf-9c3e-7fa7f8205d84.js"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --porcelain: #F5F5F7;
             --rich-black: #08080A;
             --purple: #8A2BE2;
+            --purple-light: #9B40F0;
+            --purple-dim: rgba(138, 43, 226, 0.10);
+            --text-dark: #1A1A1A;
+            --text-muted: #6B7280;
+            --border: rgba(0, 0, 0, 0.08);
         }
 
         * {
@@ -39,12 +44,219 @@
             inset: 0;
             pointer-events: none;
             z-index: 9000;
-            opacity: 0.04;
+            opacity: 0.03;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
             mix-blend-mode: multiply;
         }
 
-        /* ═══ HEADER ═══ */
+        /* ═══ HELPERS ═══ */
+        .sec-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--purple);
+            margin-bottom: 12px;
+        }
+
+        .sec-title {
+            font-size: clamp(1.9rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--text-dark);
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .sec-sub {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 520px;
+            line-height: 1.65;
+        }
+
+        /* ═══ NAVBAR ═══ */
+        #main-nav {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        #main-nav .nav-links a {
+            color: var(--text-muted);
+            transition: color 0.25s;
+            text-decoration: none;
+        }
+
+        #main-nav .nav-links a:hover {
+            color: var(--text-dark);
+        }
+
+        .nav-cta-btn {
+            background: var(--purple);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-decoration: none;
+            transition: background 0.25s, transform 0.2s;
+            display: inline-block;
+        }
+
+        .nav-cta-btn:hover {
+            background: var(--purple-light);
+            transform: translateY(-1px);
+        }
+
+        .nav-dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-dropdown > span {
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: color 0.25s;
+        }
+
+        .nav-dropdown:hover > span {
+            color: var(--text-dark);
+        }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding-top: 14px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            z-index: 200;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .nav-dropdown-inner {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 8px;
+            min-width: 260px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-dropdown-inner a {
+            display: block;
+            padding: 12px 16px;
+            color: #555;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .nav-dropdown-inner a:hover {
+            background: var(--purple-dim);
+            color: var(--text-dark) !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            z-index: 60;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--text-dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 90px 24px 32px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 45;
+            flex-direction: column;
+            gap: 4px;
+            transform: translateY(-100%);
+            transition: transform 0.35s ease;
+        }
+
+        .mobile-menu.open {
+            transform: translateY(0);
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 14px 16px;
+            color: #555;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 12px;
+            transition: background 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(0, 0, 0, 0.04);
+        }
+
+        .mobile-cta {
+            text-align: center;
+            margin-top: 12px;
+            padding: 16px;
+            background: var(--purple) !important;
+            color: white !important;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+        }
+
+        /* ═══ PAGE HEADER ═══ */
         .page-header {
             padding: 140px 24px 60px;
             text-align: center;
@@ -58,6 +270,7 @@
             line-height: 1.1;
             letter-spacing: -0.03em;
             margin-bottom: 16px;
+            color: var(--text-dark);
         }
 
         .page-header h1 span {
@@ -66,7 +279,7 @@
 
         .page-header p {
             font-size: 1.15rem;
-            color: #777;
+            color: var(--text-muted);
             font-weight: 300;
             line-height: 1.7;
         }
@@ -155,7 +368,7 @@
             gap: 12px;
             max-width: 1200px;
             margin: 40px auto 0;
-            padding: 0 24px 100px;
+            padding: 0 24px 60px;
         }
 
         .app-card {
@@ -198,236 +411,16 @@
             white-space: nowrap;
         }
 
-        /* Hidden card */
         .app-card.hidden {
             display: none;
         }
 
-        /* No results */
         .no-results {
             grid-column: 1 / -1;
             text-align: center;
             padding: 80px 20px;
             color: #aaa;
             font-size: 1rem;
-        }
-
-        /* ═══ CTA BOTTOM BAR ═══ */
-        .bottom-cta {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-            padding: 16px 24px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 16px;
-            z-index: 100;
-        }
-
-        .bottom-cta p {
-            font-size: 0.9rem;
-            color: #666;
-            font-weight: 400;
-        }
-
-        .bottom-cta a {
-            background: var(--rich-black);
-            color: white;
-            padding: 12px 28px;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform 0.2s;
-        }
-
-        .bottom-cta a:hover {
-            transform: scale(1.03);
-        }
-
-        /* ═══ NAV ═══ */
-        #main-nav .nav-logo {
-            color: var(--rich-black);
-            transition: color 0.4s ease;
-        }
-
-        #main-nav .nav-links a {
-            color: #777;
-            transition: color 0.3s ease;
-        }
-
-        #main-nav .nav-links a:hover {
-            color: var(--rich-black);
-        }
-
-        .nav-dropdown {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-dropdown>span {
-            cursor: pointer;
-            color: #777;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-dropdown:hover>span {
-            color: var(--rich-black);
-        }
-
-        .nav-dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            padding-top: 14px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.25s ease;
-            z-index: 200;
-        }
-
-        .nav-dropdown:hover .nav-dropdown-menu {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .nav-dropdown-inner {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 16px;
-            padding: 8px;
-            min-width: 260px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-dropdown-inner a {
-            display: block;
-            padding: 12px 16px;
-            color: #555;
-            text-decoration: none;
-            border-radius: 10px;
-            transition: all 0.2s;
-            font-size: 0.85rem;
-        }
-
-        .nav-dropdown-inner a:hover {
-            background: rgba(138, 43, 226, 0.08);
-            color: var(--rich-black) !important;
-        }
-
-        #main-nav .nav-cta {
-            border: 1px solid rgba(0, 0, 0, 0.15);
-            color: var(--rich-black);
-            transition: all 0.3s ease;
-        }
-
-        #main-nav .nav-cta:hover {
-            background: var(--rich-black);
-            color: white;
-        }
-
-        /* ═══ MOBILE HAMBURGER ═══ */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            gap: 5px;
-            width: 28px;
-            height: 28px;
-            cursor: pointer;
-            z-index: 60;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 100%;
-            height: 2px;
-            background: var(--rich-black);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .hamburger.open span:nth-child(1) {
-            transform: translateY(7px) rotate(45deg);
-        }
-
-        .hamburger.open span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.open span:nth-child(3) {
-            transform: translateY(-7px) rotate(-45deg);
-        }
-
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 90px 24px 32px;
-            background: rgba(245, 245, 247, 0.98);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            z-index: 45;
-            flex-direction: column;
-            gap: 4px;
-            transform: translateY(-100%);
-            transition: transform 0.35s ease;
-        }
-
-        .mobile-menu.open {
-            transform: translateY(0);
-        }
-
-        .mobile-menu a {
-            display: block;
-            padding: 14px 16px;
-            color: #555;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            border-radius: 12px;
-            transition: background 0.2s;
-        }
-
-        .mobile-menu a:hover {
-            background: rgba(0, 0, 0, 0.04);
-        }
-
-        .mobile-menu .mobile-menu-cta {
-            display: block;
-            text-align: center;
-            margin-top: 12px;
-            padding: 16px;
-            background: var(--rich-black);
-            color: white;
-            border-radius: 100px;
-            font-weight: 700;
-            font-size: 0.95rem;
-        }
-
-        @media (max-width:768px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .mobile-menu {
-                display: flex;
-            }
         }
 
         @media (max-width: 768px) {
@@ -444,17 +437,6 @@
                 width: 36px;
                 height: 36px;
             }
-
-            .bottom-cta {
-                flex-direction: column;
-                gap: 10px;
-                padding: 14px 20px;
-            }
-
-            .bottom-cta p {
-                font-size: 0.8rem;
-                text-align: center;
-            }
         }
     </style>
 </head>
@@ -463,69 +445,39 @@
 
     <div class="noise-overlay"></div>
 
-    <!-- Nav -->
-    <nav class="fixed top-0 left-0 w-full z-50 px-6 md:px-8 py-5 flex justify-between items-center bg-[#F5F5F7]/80 backdrop-blur-xl border-b border-black/5"
-        id="main-nav">
-        <a href="index.html" class="nav-logo text-2xl font-bold tracking-tighter no-underline"><img src="logokairosok.png" alt="Kairos" style="height:48px;width:auto;display:block;"></a>
-        <div class="nav-links hidden md:flex gap-8 text-sm font-medium tracking-wide" style="align-items:center;">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-6 md:px-8 py-4 flex justify-between items-center" id="main-nav">
+        <a href="index.html"><img src="logokairosok.png" alt="Kairos" style="height:48px;width:auto;display:block;"></a>
+        <div class="nav-links hidden md:flex gap-8 text-sm font-medium tracking-wide">
             <a href="chi-siamo.html">Chi siamo</a>
-            <div class="nav-dropdown">
-                <span>Che attività hai? ▾</span>
-                <div class="nav-dropdown-menu">
-                    <div class="nav-dropdown-inner">
-                        <a href="centro-estetico.html">Centro Estetico & Parrucchiere</a>
-                        <a href="studio-medico.html">Studio Medico & Dentistico</a>
-                        <a href="ristorazione.html">Ristorazione & Food</a>
-                    </div>
-                </div>
-            </div>
-            <a href="#" class="!text-black font-bold">App</a>
-            <a href="prezzi.html" class="hoverable">Prezzi</a>
-            <a href="faq.html" class="hoverable">FAQ</a>
+            <div class="nav-dropdown"><span>Che attività hai? ▾</span><div class="nav-dropdown-menu"><div class="nav-dropdown-inner"><a href="centro-estetico.html">Centro Estetico & Parrucchiere</a><a href="studio-medico.html">Studio Medico & Dentistico</a><a href="ristorazione.html">Ristorazione & Food</a><a href="agenzia-immobiliare.html">Agenzia Immobiliare</a><a href="studio-legale.html">Studio Legale</a></div></div></div>
+            <a href="integrazioni.html">Integrazioni</a><a href="faq.html">FAQ</a>
         </div>
-        <div style="display:flex; align-items:center; gap:16px;">
-            <a href="index.html#prenota" class="nav-cta px-4 py-2 rounded-full text-sm font-semibold">
-                Prenota Call
-            </a>
-            <div class="hamburger" id="hamburger"
-                onclick="this.classList.toggle('open'); document.getElementById('mobile-menu').classList.toggle('open');">
-                <span></span><span></span><span></span>
-            </div>
+        <div class="flex items-center gap-4">
+            <a href="index.html#prenota" class="nav-cta-btn hidden md:inline-block">Prenota Call</a>
+            <div class="hamburger" id="hamburger" onclick="this.classList.toggle('open');document.getElementById('mobile-menu').classList.toggle('open');"><span></span><span></span><span></span></div>
         </div>
     </nav>
 
     <div class="mobile-menu" id="mobile-menu">
         <a href="chi-siamo.html">Chi siamo</a>
-        <div style="padding-left:12px; display:flex; flex-direction:column; gap:2px;">
-            <span
-                style="padding:10px 16px 6px; color:#999; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em;">Che
-                attività hai?</span>
-            <a href="centro-estetico.html">Centro Estetico & Parrucchiere</a>
-            <a href="studio-medico.html">Studio Medico & Dentistico</a>
-            <a href="ristorazione.html">Ristorazione & Food</a>
-        </div>
-        <a href="#" style="font-weight:700; color:var(--rich-black);">App</a>
-        <a href="prezzi.html">Prezzi</a>
-        <a href="faq.html">FAQ</a>
-        <a href="index.html#prenota" class="mobile-menu-cta"
-            onclick="document.getElementById('hamburger').classList.remove('open'); document.getElementById('mobile-menu').classList.remove('open');">Prenota
-            Call →</a>
+        <div style="padding-left:12px;display:flex;flex-direction:column;gap:2px;"><span style="padding:10px 16px 6px;color:#999;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;">Che attività hai?</span><a href="centro-estetico.html">Centro Estetico & Parrucchiere</a><a href="studio-medico.html">Studio Medico & Dentistico</a><a href="ristorazione.html">Ristorazione & Food</a><a href="agenzia-immobiliare.html">Agenzia Immobiliare</a><a href="studio-legale.html">Studio Legale</a></div>
+        <a href="integrazioni.html">Integrazioni</a><a href="faq.html">FAQ</a>
+        <a href="index.html#prenota" class="mobile-cta" onclick="document.getElementById('hamburger').classList.remove('open');document.getElementById('mobile-menu').classList.remove('open');">Prenota Call →</a>
     </div>
 
-    <!-- Header -->
+    <!-- Page Header -->
     <div class="page-header">
-        <h1>Si integra con oltre <span>1.300</span> app.</h1>
-        <p>Il tuo ecosistema Kairòs dialoga con i software che già usi. Cerca la tua app preferita e scopri quanto è
-            semplice collegarla.</p>
+        <div class="sec-label">INTEGRAZIONI</div>
+        <h1>Si integra con oltre <span>1.400</span> app.</h1>
+        <p>Il tuo ecosistema Kairòs dialoga con i software che già usi. Cerca la tua app preferita e scopri quanto è semplice collegarla.</p>
 
         <div class="search-container">
-            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8" />
                 <path d="m21 21-4.3-4.3" />
             </svg>
-            <input type="text" class="search-input" id="search-input" placeholder="Cerca tra le integrazioni..."
-                autocomplete="off">
+            <input type="text" class="search-input" id="search-input" placeholder="Cerca tra le integrazioni..." autocomplete="off">
         </div>
         <div class="search-count" id="search-count"></div>
     </div>
@@ -551,10 +503,14 @@
     <div class="app-grid" id="app-grid"></div>
 
     <!-- Bottom CTA -->
-    <div class="bottom-cta">
-        <p>Non trovi la tua app? Tranquillo — possiamo collegarci a qualsiasi API.</p>
-        <a href="index.html#prenota">Parliamone →</a>
-    </div>
+    <section style="background: linear-gradient(135deg, #1a0533 0%, #2d1059 100%); padding: 64px 24px; text-align: center; position: relative; z-index: 10; margin-top: 48px;">
+        <h3 style="color: white; font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em;">Non trovi la tua app?</h3>
+        <p style="color: rgba(255,255,255,0.65); font-size: 1rem; margin-bottom: 28px; font-weight: 300;">Tranquillo — possiamo collegarci a qualsiasi API. Scrivici e lo valutiamo insieme.</p>
+        <a href="mailto:business@kairos-24.it" style="display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:white;padding:14px 32px;border-radius:100px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:background 0.25s;">Contattaci →</a>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color:#EBEBED;color:var(--rich-black);padding:80px 24px 40px;position:relative;z-index:10;"><div style="max-width:1100px;margin:0 auto;"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:48px;margin-bottom:60px;"><div><div style="margin-bottom:10px;"><img src="logokairosok.png" alt="Kairos" style="height:60px;width:auto;display:block;"></div><p style="color:#666;font-size:0.9rem;line-height:1.6;margin-bottom:14px;">Implementiamo l'AI nella tua azienda. Assistenti vocali, CRM e siti web.</p><a href="mailto:business@kairos-24.it" style="color:#555;font-size:0.85rem;text-decoration:none;">business@kairos-24.it</a></div><div><p style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#555;margin-bottom:18px;">Esplora</p><div style="display:flex;flex-direction:column;gap:12px;"><a href="index.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Home</a><a href="chi-siamo.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Chi siamo</a><a href="faq.html" style="color:#888;font-size:0.88rem;text-decoration:none;">FAQ</a><a href="integrazioni.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Integrazioni</a></div></div><div><p style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#555;margin-bottom:18px;">Settori</p><div style="display:flex;flex-direction:column;gap:12px;"><a href="centro-estetico.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Centro Estetico & Parrucchiere</a><a href="studio-medico.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Studio Medico & Dentistico</a><a href="ristorazione.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Ristorazione & Food</a><a href="agenzia-immobiliare.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Agenzia Immobiliare</a><a href="studio-legale.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Studio Legale</a></div></div><div><p style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#555;margin-bottom:18px;">Contatti</p><div style="display:flex;flex-direction:column;gap:12px;"><a href="mailto:business@kairos-24.it" style="color:#888;font-size:0.88rem;text-decoration:none;">business@kairos-24.it</a><a href="index.html#prenota" style="color:#888;font-size:0.88rem;text-decoration:none;">Prenota una call gratuita →</a></div></div></div><div style="border-top:1px solid rgba(0,0,0,0.1);padding-top:32px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;"><p style="color:#444;font-size:0.82rem;margin:0;">© 2026 Kairòs Automation. Tutti i diritti riservati.</p><div style="display:flex;gap:20px;font-size:0.82rem;"><a href="privacy-policy.html" style="color:#555;text-decoration:none;">Privacy Policy</a><a href="https://www.iubenda.com/privacy-policy/49016120/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed" style="color:#555;text-decoration:none;">Cookie Policy</a><script type="text/javascript">(function(w,d){var loader=function(){var s=d.createElement("script"),tag=d.getElementsByTagName("script")[0];s.src="https://cdn.iubenda.com/iubenda.js";tag.parentNode.insertBefore(s,tag);};if(w.addEventListener){w.addEventListener("load",loader,false);}else if(w.attachEvent){w.attachEvent("onload",loader);}else{w.onload=loader;}})(window,document);</script></div></div></div></footer>
 
     <script>
         // ═══ INTEGRATIONS DATABASE ═══
@@ -821,6 +777,67 @@
             { n: "Webhook", d: "webhook.site", c: "dev" },
             { n: "GraphQL", d: "graphql.org", c: "dev" },
             { n: "REST API", d: "restfulapi.net", c: "dev" },
+
+            // ─── AI (aggiuntivi) ───
+            { n: "Anthropic Claude", d: "anthropic.com", c: "ai" },
+            { n: "Perplexity AI", d: "perplexity.ai", c: "ai" },
+
+            // ─── DATABASE (aggiuntivi) ───
+            { n: "Xata", d: "xata.io", c: "database" },
+
+            // ─── CRM (aggiuntivi) ───
+            { n: "Attio", d: "attio.com", c: "crm" },
+            { n: "Folk", d: "folk.app", c: "crm" },
+            { n: "Twenty CRM", d: "twenty.com", c: "crm" },
+            { n: "Streak", d: "streak.com", c: "crm" },
+            { n: "Nutshell", d: "nutshell.com", c: "crm" },
+            { n: "Capsule CRM", d: "capsulecrm.com", c: "crm" },
+
+            // ─── E-COMMERCE (aggiuntivi) ───
+            { n: "Lemon Squeezy", d: "lemonsqueezy.com", c: "ecommerce" },
+            { n: "Wix eCommerce", d: "wix.com", c: "ecommerce" },
+
+            // ─── PAYMENTS (aggiuntivi) ───
+            { n: "Klarna", d: "klarna.com", c: "payments" },
+            { n: "Revolut Business", d: "revolut.com", c: "payments" },
+            { n: "Satispay", d: "satispay.com", c: "payments" },
+            { n: "Nexi", d: "nexi.it", c: "payments" },
+            { n: "Yousign", d: "yousign.com", c: "payments" },
+            { n: "DocuSign", d: "docusign.com", c: "payments" },
+
+            // ─── PROJECT MANAGEMENT (aggiuntivi) ───
+            { n: "Plane", d: "plane.so", c: "pm" },
+
+            // ─── CLOUD (aggiuntivi) ───
+            { n: "Cloudflare R2", d: "cloudflare.com", c: "cloud" },
+            { n: "Backblaze B2", d: "backblaze.com", c: "cloud" },
+            { n: "Bunny CDN", d: "bunny.net", c: "cloud" },
+            { n: "Railway", d: "railway.app", c: "cloud" },
+            { n: "Render", d: "render.com", c: "cloud" },
+            { n: "Fly.io", d: "fly.io", c: "cloud" },
+
+            // ─── SUPPORT (aggiuntivi) ───
+            { n: "Groove", d: "groovehq.com", c: "support" },
+            { n: "Chatwoot", d: "chatwoot.com", c: "support" },
+
+            // ─── SOCIAL (aggiuntivi) ───
+            { n: "Sprout Social", d: "sproutsocial.com", c: "social" },
+
+            // ─── DEVELOPER (aggiuntivi) ───
+            { n: "OpsGenie", d: "atlassian.com", c: "dev" },
+            { n: "Swagger", d: "swagger.io", c: "dev" },
+            { n: "Doppler", d: "doppler.com", c: "dev" },
+
+            // ─── PRODUCTIVITY (aggiuntivi) ───
+            { n: "Linear", d: "linear.app", c: "productivity" },
+            { n: "Roam Research", d: "roamresearch.com", c: "productivity" },
+            { n: "Logseq", d: "logseq.com", c: "productivity" },
+            { n: "Craft", d: "craft.do", c: "productivity" },
+            { n: "Supernotes", d: "supernotes.app", c: "productivity" },
+            { n: "Reclaim.ai", d: "reclaim.ai", c: "productivity" },
+            { n: "Motion", d: "usemotion.com", c: "productivity" },
+            { n: "Akiflow", d: "akiflow.com", c: "productivity" },
+            { n: "Sunsama", d: "sunsama.com", c: "productivity" },
         ];
 
         // ═══ RENDER ═══
@@ -893,71 +910,6 @@
         renderApps();
     </script>
 
-    <!-- Footer -->
-    <footer style="background-color: #EBEBED; color: var(--rich-black); padding: 80px 24px 40px; position: relative; z-index: 10;">
-    <div style="max-width: 1100px; margin: 0 auto;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 48px; margin-bottom: 60px;">
-            <div>
-                <div style="margin-bottom:10px;"><img src="logokairosok.png" alt="Kairos" style="height:60px;width:auto;display:block;"></div>
-                <p style="color: #666; font-size: 0.9rem; font-weight: 400; line-height: 1.6; margin-bottom: 14px;">Automazione per l'Italia che lavora.</p>
-                <a href="mailto:business@kairos-24.it" style="color: #555; font-size: 0.85rem; text-decoration: none; display: block; transition: color 0.3s;">business@kairos-24.it</a>
-            </div>
-            <div>
-                <p style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #555; margin-bottom: 18px;">Esplora</p>
-                <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <a href="index.html" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">Home</a>
-                    <a href="chi-siamo.html" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">Chi siamo</a>
-                    <a href="prezzi.html" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">Prezzi</a>
-                    <a href="faq.html" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">FAQ</a>
-                    <a href="integrazioni.html" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">App</a>
-                </div>
-            </div>
-            <div>
-                <p style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #555; margin-bottom: 18px;">Settori</p>
-                <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <a href="centro-estetico.html" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">Centro Estetico & Parrucchiere</a>
-                    <a href="studio-medico.html" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">Studio Medico & Dentistico</a>
-                    <a href="ristorazione.html" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">Ristorazione & Food</a>
-                </div>
-            </div>
-            <div>
-                <p style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #555; margin-bottom: 18px;">Contatti</p>
-                <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <a href="mailto:business@kairos-24.it" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">business@kairos-24.it</a>
-                    <a href="index.html#prenota" style="color: #888; font-size: 0.88rem; text-decoration: none; transition: color 0.3s;">Prenota una call gratuita →</a>
-                </div>
-            </div>
-        </div>
-        <div style="border-top: 1px solid rgba(0,0,0,0.1); padding-top: 32px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
-            <p style="color: #444; font-size: 0.82rem; margin: 0;">© 2026 Kairòs Automation. Tutti i diritti riservati.</p>
-            <div style="display: flex; gap: 20px; font-size: 0.82rem; color: #555;">
-                <a href="privacy-policy.html" style="color: #555; text-decoration: none;">Privacy Policy</a>
-                <a href="https://www.iubenda.com/privacy-policy/49016120/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed" title="Cookie Policy" style="color: #555; text-decoration: none;">Cookie Policy</a>
-                <script type="text/javascript">(function (w, d) { var loader = function () { var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s, tag); }; if (w.addEventListener) { w.addEventListener("load", loader, false); } else if (w.attachEvent) { w.attachEvent("onload", loader); } else { w.onload = loader; } })(window, document);</script>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<!-- Floating Email Button -->
-<a href="mailto:business@kairos-24.it" class="floating-email-btn" title="Scrivici via email">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-    <span>Scrivici</span>
-</a>
-<style>
-.floating-email-btn {
-    position: fixed; bottom: 32px; right: 32px; z-index: 998;
-    background: #8A2BE2; color: white;
-    padding: 14px 22px; border-radius: 100px;
-    font-size: 0.875rem; font-weight: 600; text-decoration: none;
-    display: flex; align-items: center; gap: 8px;
-    box-shadow: 0 8px 24px rgba(138,43,226,0.35);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    font-family: 'Inter', sans-serif;
-}
-.floating-email-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(138,43,226,0.45); }
-@media (max-width: 768px) { .floating-email-btn span { display: none; } .floating-email-btn { padding: 14px; bottom: 24px; right: 20px; } }
-</style>
 </body>
 
 </html>
