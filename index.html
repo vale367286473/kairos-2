@@ -177,6 +177,57 @@
         .proof-num { font-size: 2.8rem; font-weight: 900; color: var(--purple); line-height: 1; letter-spacing: -0.04em; margin-bottom: 8px; }
         .proof-lbl { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); line-height: 1.4; text-transform: uppercase; letter-spacing: 0.06em; }
 
+        /* DATA CARDS */
+        .data-section { background: #fff; padding: 96px 24px; }
+        .data-grid {
+            max-width: 1280px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+        }
+        .data-card {
+            position: relative; padding: 40px 32px;
+            border-radius: 24px; overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .data-card:hover { transform: translateY(-4px); }
+        .data-card--dark {
+            background: #0f172a; color: #fff;
+            box-shadow: 0 20px 60px rgba(15,23,42,0.25);
+        }
+        .data-card--dark:hover { box-shadow: 0 28px 70px rgba(15,23,42,0.35); }
+        .data-card--purple {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color: #fff;
+            box-shadow: 0 20px 60px rgba(138,43,226,0.25);
+        }
+        .data-card--purple:hover { box-shadow: 0 28px 70px rgba(138,43,226,0.35); }
+        .data-card--light {
+            background: #f8fafc; color: var(--text-dark);
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+        }
+        .data-card--light:hover { box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+        .data-number {
+            font-size: clamp(3.5rem, 7vw, 5.5rem); font-weight: 900;
+            line-height: 1; letter-spacing: -0.05em; margin-bottom: 16px;
+        }
+        .data-card--dark .data-number { color: #fff; }
+        .data-card--purple .data-number { color: #fff; }
+        .data-card--light .data-number { color: var(--purple); }
+        .data-text {
+            font-size: 1rem; line-height: 1.6; font-weight: 400; margin-bottom: 24px;
+        }
+        .data-card--dark .data-text { color: rgba(255,255,255,0.65); }
+        .data-card--purple .data-text { color: rgba(255,255,255,0.75); }
+        .data-card--light .data-text { color: var(--text-muted); }
+        .data-source {
+            font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.1em; padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.12);
+        }
+        .data-card--dark .data-source { color: rgba(255,255,255,0.3); }
+        .data-card--purple .data-source { color: rgba(255,255,255,0.4); border-top-color: rgba(255,255,255,0.2); }
+        .data-card--light .data-source { color: var(--text-muted); opacity: 0.5; border-top-color: rgba(0,0,0,0.08); }
+        @media (max-width: 768px) { .data-grid { grid-template-columns: 1fr; } }
+
         /* SECTION HELPERS */
         .sec { padding: 96px 24px; }
         .sec-inner { max-width: 1280px; margin: 0 auto; }
@@ -417,6 +468,31 @@
                 </div>
             </div>
         </div>
+
+        <!-- ═══ I NUMERI CHE CONTANO ═══ -->
+        <section class="data-section">
+            <div class="data-grid">
+
+                <div class="data-card data-card--dark fade-up">
+                    <div class="data-number">85%</div>
+                    <p class="data-text">dei chiamanti che non ricevono risposta non richiama. Si rivolge a un concorrente.</p>
+                    <div class="data-source">Fonte: KPMG</div>
+                </div>
+
+                <div class="data-card data-card--purple fade-up">
+                    <div class="data-number"><span class="counter" data-target="51">0</span>%</div>
+                    <p class="data-text">dei consumatori è già aperto all'AI conversazionale. Il 73% cerca attivamente tecnologie che semplifichino le decisioni.</p>
+                    <div class="data-source">Fonte: Accenture</div>
+                </div>
+
+                <div class="data-card data-card--light fade-up">
+                    <div class="data-number"><span class="counter" data-target="65">0</span>%</div>
+                    <p class="data-text">delle attività ripetitive di una segretaria è automatizzabile. Tempo che potresti reinvestire nel tuo business.</p>
+                    <div class="data-source">Fonte: British Telecom</div>
+                </div>
+
+            </div>
+        </section>
 
         <!-- ═══ COME FUNZIONA ═══ -->
         <section class="sec bg-slate" id="come-funziona">
@@ -843,6 +919,24 @@
                 const isOpen = item.classList.contains('open');
                 document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
                 if (!isOpen) item.classList.add('open');
+            });
+        });
+
+        // ─── COUNTER ANIMATION ───
+        document.querySelectorAll('.counter').forEach(counter => {
+            const target = parseInt(counter.dataset.target);
+            ScrollTrigger.create({
+                trigger: counter,
+                start: 'top 85%',
+                once: true,
+                onEnter: () => {
+                    gsap.to({ val: 0 }, {
+                        val: target,
+                        duration: 1.8,
+                        ease: 'power2.out',
+                        onUpdate: function () { counter.textContent = Math.round(this.targets()[0].val); }
+                    });
+                }
             });
         });
 
