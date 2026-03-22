@@ -9,17 +9,30 @@
     <!-- Tailwind CSS (via CDN for standalone) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
             --rich-black: #08080a;
-            --porcelain: #f4f5f0;
+            --porcelain: #f8fafc;
             --accent: #ff5100;
-            --purple: #7928CA;
+            --purple: #8A2BE2;
+            --purple-light: #9B40F0;
+            --purple-dim: rgba(138, 43, 226, 0.10);
             --dark-gray: #1a1a1f;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border: rgba(0, 0, 0, 0.08);
+        }
+
+        /* ACCENT — Playfair Display italic serif */
+        .accent {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--purple);
         }
 
         body {
@@ -120,7 +133,7 @@
         }
 
         .nav-cta {
-            background: var(--rich-black);
+            background: #0f172a;
             color: white;
             padding: 10px 24px;
             border-radius: 100px;
@@ -130,9 +143,9 @@
         }
 
         .nav-cta:hover {
-            background: var(--accent);
+            background: var(--purple);
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 81, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
         }
 
         /* Hamburger Menu */
@@ -330,10 +343,11 @@
 
         .legal-box {
             background: white;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
+            border: 1px solid #f1f5f9;
+            border-radius: 24px;
             padding: 24px;
             margin: 32px 0;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
         }
 
         .legal-box h4 {
@@ -431,7 +445,7 @@
     </div>
 
     <header class="legal-header">
-        <h1 class="legal-title">Privacy Policy</h1>
+        <h1 class="legal-title"><span class="accent">Privacy</span> Policy</h1>
         <div class="legal-last-updated">Ultimo aggiornamento: Febbraio 2026</div>
     </header>
 

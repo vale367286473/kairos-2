@@ -15,19 +15,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
 
     <style>
         :root {
-            --porcelain: #F5F5F7;
+            --porcelain: #f8fafc;
             --rich-black: #08080A;
             --purple: #8A2BE2;
             --purple-light: #9B40F0;
             --purple-dim: rgba(138, 43, 226, 0.10);
-            --text-dark: #1A1A1A;
-            --text-muted: #6B7280;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
             --border: rgba(0, 0, 0, 0.08);
+        }
+
+        /* ACCENT — Playfair Display italic serif */
+        .accent {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--purple);
         }
 
         * { box-sizing: border-box; }
@@ -69,7 +77,7 @@
         #main-nav .nav-links a:hover { color: var(--text-dark); }
 
         .nav-cta-btn {
-            background: var(--purple);
+            background: #0f172a;
             color: white;
             padding: 10px 22px;
             border-radius: 100px;
@@ -81,7 +89,7 @@
         }
 
         .nav-cta-btn:hover {
-            background: var(--purple-light);
+            background: var(--purple);
             transform: translateY(-1px);
         }
 
@@ -419,7 +427,7 @@
         <section style="background:#F5F5F7;padding-top:140px;padding-bottom:80px;padding-left:24px;padding-right:24px;text-align:center;">
             <div style="max-width:700px;margin:0 auto;">
                 <p class="sec-label fade-up">DOMANDE FREQUENTI</p>
-                <h1 class="sec-title fade-up" style="max-width:none;">Hai domande? Abbiamo risposte.</h1>
+                <h1 class="sec-title fade-up" style="max-width:none;">Hai domande? Abbiamo <span class="accent">risposte.</span></h1>
                 <p class="sec-sub fade-up" style="margin:0 auto;">Tutto quello che vuoi sapere su Kairòs, prima di iniziare.</p>
             </div>
         </section>
@@ -652,7 +660,7 @@
         <!-- ═══ SEZIONE 3 — CTA FINALE ═══ -->
         <section class="sec" style="background:linear-gradient(135deg,#1a0533 0%,#2d1059 100%);text-align:center;">
             <div class="sec-inner">
-                <h2 class="fade-up" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:white;letter-spacing:-0.03em;margin:0 0 16px 0;">Non hai trovato risposta?</h2>
+                <h2 class="fade-up" style="font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:white;letter-spacing:-0.03em;margin:0 0 16px 0;">Non hai trovato <span class="accent">risposta?</span></h2>
                 <p class="fade-up" style="color:rgba(255,255,255,0.65);font-size:1rem;font-weight:300;margin:0 0 40px 0;">Scrivici direttamente. Ti risponderemo entro poche ore in orario lavorativo.</p>
                 <div class="cta-buttons fade-up">
                     <a href="index.html#prenota" class="btn-purple">

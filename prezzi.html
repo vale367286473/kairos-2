@@ -14,18 +14,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --porcelain: #F5F5F7;
+            --porcelain: #f8fafc;
             --rich-black: #08080A;
             --purple: #8A2BE2;
             --purple-light: #9B40F0;
             --purple-dim: rgba(138, 43, 226, 0.10);
-            --text-dark: #1A1A1A;
-            --text-muted: #6B7280;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
             --border: rgba(0, 0, 0, 0.08);
+        }
+
+        /* ACCENT — Playfair Display italic serif */
+        .accent {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--purple);
         }
 
         * { box-sizing: border-box; }
@@ -54,8 +62,8 @@
         #main-nav { background: rgba(255,255,255,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
         #main-nav .nav-links a { color: var(--text-muted); transition: color 0.25s; text-decoration: none; }
         #main-nav .nav-links a:hover { color: var(--text-dark); }
-        .nav-cta-btn { background: var(--purple); color: white; padding: 10px 22px; border-radius: 100px; font-weight: 600; font-size: 0.875rem; text-decoration: none; transition: background 0.25s, transform 0.2s; display: inline-block; }
-        .nav-cta-btn:hover { background: var(--purple-light); transform: translateY(-1px); }
+        .nav-cta-btn { background: #0f172a; color: white; padding: 10px 22px; border-radius: 100px; font-weight: 600; font-size: 0.875rem; text-decoration: none; transition: background 0.25s, transform 0.2s; display: inline-block; }
+        .nav-cta-btn:hover { background: var(--purple); transform: translateY(-1px); }
         .nav-dropdown { position: relative; display: flex; align-items: center; }
         .nav-dropdown > span { cursor: pointer; color: var(--text-muted); transition: color 0.25s; }
         .nav-dropdown:hover > span { color: var(--text-dark); }
@@ -102,11 +110,17 @@
 
         .pricing-card {
             background: white;
-            border: 1px solid var(--border);
-            border-radius: 20px;
+            border: 1px solid #f1f5f9;
+            border-radius: 24px;
             padding: 36px;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .pricing-card:hover {
+            box-shadow: 0 8px 30px rgba(138,43,226,0.08);
+            border-color: rgba(138,43,226,0.2);
         }
         .pricing-card.featured {
             border: 2px solid var(--purple);
@@ -343,10 +357,16 @@
             max-width: 600px;
             margin: 40px auto 0;
             background: var(--porcelain);
-            border: 1px solid var(--border);
-            border-radius: 20px;
+            border: 1px solid #f1f5f9;
+            border-radius: 24px;
             padding: 40px;
             text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .custom-card:hover {
+            box-shadow: 0 8px 30px rgba(138,43,226,0.08);
+            border-color: rgba(138,43,226,0.2);
         }
         .custom-card p {
             color: var(--text-muted);
@@ -496,7 +516,7 @@
         <section style="background: var(--porcelain); padding-top: 140px; padding-bottom: 96px; padding-left: 24px; padding-right: 24px; text-align: center;">
             <div class="fade-up">
                 <p class="sec-label">PIANI E PREZZI</p>
-                <h1 class="sec-title" style="margin-bottom:16px;">Trasparenza totale.</h1>
+                <h1 class="sec-title" style="margin-bottom:16px;"><span class="accent">Trasparenza</span> totale.</h1>
                 <p class="sec-sub" style="margin: 0 auto;">Scegli il piano giusto per la tua attività. Nessun costo nascosto, nessuna sorpresa.</p>
             </div>
         </section>
@@ -505,7 +525,7 @@
         <section class="sec" style="background: #FFFFFF;">
             <div class="sec-inner" style="text-align: center;">
                 <p class="sec-label fade-up">SERVIZI UNA TANTUM</p>
-                <h2 class="sec-title fade-up">Servizi una tantum</h2>
+                <h2 class="sec-title fade-up">Servizi una <span class="accent">tantum</span></h2>
                 <p class="sec-sub fade-up" style="margin: 0 auto;">Paghi una volta sola. Il sito o il menu è tuo per sempre.</p>
 
                 <div class="pricing-grid">
@@ -572,7 +592,7 @@
         <section class="sec" style="background: var(--porcelain);">
             <div class="sec-inner" style="text-align: center;">
                 <p class="sec-label fade-up">L'ECOSISTEMA COMPLETO</p>
-                <h2 class="sec-title fade-up">L'Ecosistema Completo</h2>
+                <h2 class="sec-title fade-up">L'Ecosistema <span class="accent">Completo</span></h2>
                 <p class="sec-sub fade-up" style="margin: 0 auto;">Tutti i nostri servizi in un unico abbonamento. Attivo entro 48 ore dalla call.</p>
 
                 <!-- Toggle periodi -->
@@ -622,7 +642,7 @@
         <section class="sec" style="background: #FFFFFF;">
             <div class="sec-inner" style="text-align: center;">
                 <p class="sec-label fade-up">SOLUZIONI SU MISURA</p>
-                <h2 class="sec-title fade-up">Hai esigenze specifiche?</h2>
+                <h2 class="sec-title fade-up">Hai esigenze <span class="accent">specifiche?</span></h2>
                 <p class="sec-sub fade-up" style="margin: 0 auto;">Vuoi integrare l'AI nella tua attività in modo su misura? Automazioni personalizzate, consulenza strategica, integrazioni avanzate. Ogni progetto è diverso.</p>
 
                 <div class="custom-card fade-up">
@@ -636,7 +656,7 @@
         <section class="sec" style="background: var(--porcelain);">
             <div style="max-width: 680px; margin: 0 auto;">
                 <p class="sec-label fade-up" style="text-align:center;">DOMANDE SUI PREZZI</p>
-                <h2 class="sec-title fade-up" style="text-align:center; margin-bottom: 56px;">Domande sui prezzi</h2>
+                <h2 class="sec-title fade-up" style="text-align:center; margin-bottom: 56px;">Domande sui <span class="accent">prezzi</span></h2>
 
                 <!-- FAQ 1 -->
                 <div class="faq-item fade-up">
@@ -683,7 +703,7 @@
         <!-- ═══ SEZIONE 6 — CTA FINALE ═══ -->
         <section class="sec" style="background: linear-gradient(135deg, #1a0533 0%, #2d1059 100%); text-align: center;">
             <div style="max-width: 600px; margin: 0 auto;">
-                <h2 class="fade-up" style="font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.03em; color: white; line-height: 1.1; margin-bottom: 16px;">Hai ancora dubbi?</h2>
+                <h2 class="fade-up" style="font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.03em; color: white; line-height: 1.1; margin-bottom: 16px;">Hai ancora <span class="accent">dubbi?</span></h2>
                 <p class="fade-up" style="font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.65; max-width: 520px; margin: 0 auto 0;">Prenota una call gratuita di 20 minuti. Ti spieghiamo tutto senza impegno.</p>
                 <div class="final-cta-wrap fade-up">
                     <a href="index.html#prenota" class="btn-cta-primary">

@@ -9,20 +9,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     <!-- Iubenda Cookie Banner -->
     <script type="text/javascript" src="https://embeds.iubenda.com/widgets/97b32e17-7a35-4bcf-9c3e-7fa7f8205d84.js"></script>
 
     <style>
         :root {
-            --porcelain: #F5F5F7;
+            --porcelain: #f8fafc;
             --rich-black: #08080A;
             --purple: #8A2BE2;
             --purple-light: #9B40F0;
             --purple-dim: rgba(138, 43, 226, 0.10);
-            --text-dark: #1A1A1A;
-            --text-muted: #6B7280;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
             --border: rgba(0, 0, 0, 0.08);
         }
 
@@ -34,6 +34,14 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+        }
+
+        /* ACCENT — Playfair Display italic serif */
+        .accent {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--purple);
         }
 
         /* ── Noise ── */
@@ -56,8 +64,8 @@
         }
         #main-nav .nav-links a { color: var(--text-muted); transition: color 0.25s; text-decoration: none; }
         #main-nav .nav-links a:hover { color: var(--text-dark); }
-        .nav-cta-btn { background: var(--purple); color: white; padding: 10px 22px; border-radius: 100px; font-weight: 600; font-size: 0.875rem; text-decoration: none; transition: background 0.25s, transform 0.2s; display: inline-block; }
-        .nav-cta-btn:hover { background: var(--purple-light); transform: translateY(-1px); }
+        .nav-cta-btn { background: #0f172a; color: white; padding: 10px 22px; border-radius: 100px; font-weight: 600; font-size: 0.875rem; text-decoration: none; transition: background 0.25s, transform 0.2s; display: inline-block; }
+        .nav-cta-btn:hover { background: var(--purple); transform: translateY(-1px); }
         .nav-dropdown { position: relative; display: flex; align-items: center; }
         .nav-dropdown > span { cursor: pointer; color: var(--text-muted); transition: color 0.25s; }
         .nav-dropdown:hover > span { color: var(--text-dark); }
@@ -116,8 +124,6 @@
             max-width: 850px;
             margin: 0 auto 24px;
         }
-
-        .hero-title .accent { color: var(--purple); }
 
         .hero-subtitle {
             font-size: clamp(1rem, 1.8vw, 1.2rem);
@@ -189,10 +195,10 @@
             max-width: 900px;
             margin: 0 auto 32px;
             padding: 48px;
-            border-radius: 20px;
+            border-radius: 24px;
             background: #ffffff;
-            border: 1px solid var(--border);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
             position: relative;
             overflow: hidden;
             opacity: 0;
@@ -201,8 +207,8 @@
         }
 
         .solution-card:hover {
-            border-color: rgba(138, 43, 226, 0.25);
-            box-shadow: 0 8px 32px rgba(138,43,226,0.1);
+            border-color: rgba(138, 43, 226, 0.2);
+            box-shadow: 0 8px 30px rgba(138,43,226,0.08);
         }
 
         .solution-card::before {
@@ -349,8 +355,6 @@
             opacity: 0;
             transform: translateY(30px);
         }
-
-        .value-title .accent { color: var(--purple); }
 
         .value-text {
             font-size: clamp(1rem, 1.6vw, 1.15rem);
@@ -505,7 +509,7 @@
         <div class="sec-inner">
             <div style="text-align:center;margin-bottom:60px;">
                 <p class="sec-label fade-up">Una giornata tipo</p>
-                <h2 class="sec-title fade-up" style="margin:0 auto 0;">Senza e con <span class="hl">Kairòs</span></h2>
+                <h2 class="sec-title fade-up" style="margin:0 auto 0;">Senza e <span class="accent">con</span> <span class="hl">Kairòs</span></h2>
             </div>
             <div class="split-container fade-up">
                 <div class="split-side split-without">
@@ -556,7 +560,7 @@
         <div class="sec-inner">
             <div style="text-align:center;margin-bottom:64px;">
                 <p class="sec-label fade-up">Come funziona</p>
-                <h2 class="sec-title fade-up" style="margin:0 auto 12px;">Come funziona, <span class="hl">nel concreto.</span></h2>
+                <h2 class="sec-title fade-up" style="margin:0 auto 12px;">Come <span class="accent">funziona,</span> <span class="hl">nel concreto.</span></h2>
                 <p class="sec-sub fade-up" style="margin:0 auto;">Tre strumenti che lavorano insieme per il tuo salone.</p>
             </div>
 
@@ -601,7 +605,7 @@
         <div class="sec-inner">
             <div style="text-align:center;margin-bottom:56px;">
                 <p class="sec-label fade-up">Business Intelligence</p>
-                <h2 class="sec-title fade-up" style="margin:0 auto 12px;">Ecco cosa vedrai <span class="hl">su Telegram.</span></h2>
+                <h2 class="sec-title fade-up" style="margin:0 auto 12px;">Ecco cosa <span class="accent">vedrai</span> <span class="hl">su Telegram.</span></h2>
                 <p class="sec-sub fade-up" style="margin:0 auto;">Ogni giorno. Automaticamente. Senza fare nulla.</p>
             </div>
 
@@ -691,7 +695,7 @@
     <section class="sec" style="background:#F5F5F7;">
         <div class="sec-inner-narrow">
             <p class="sec-label fade-up">Domande Frequenti</p>
-            <h2 class="sec-title fade-up">Hai domande?</h2>
+            <h2 class="sec-title fade-up">Hai <span class="accent">domande?</span></h2>
             <p class="sec-sub fade-up" style="margin-bottom:48px;">Le risposte più comuni per centri estetici e parrucchieri.</p>
             <div class="sector-faq-list">
                 <div class="sector-faq-item">

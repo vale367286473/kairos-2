@@ -9,20 +9,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     <!-- Iubenda Cookie Banner -->
     <script type="text/javascript" src="https://embeds.iubenda.com/widgets/97b32e17-7a35-4bcf-9c3e-7fa7f8205d84.js"></script>
 
     <style>
         :root {
-            --porcelain: #F5F5F7;
+            --porcelain: #f8fafc;
             --rich-black: #08080A;
             --purple: #8A2BE2;
             --purple-light: #9B40F0;
             --purple-dim: rgba(138, 43, 226, 0.10);
-            --text-dark: #1A1A1A;
-            --text-muted: #6B7280;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
             --border: rgba(0, 0, 0, 0.08);
         }
 
@@ -35,6 +35,14 @@
             overflow-x: hidden;
             margin: 0;
             -webkit-font-smoothing: antialiased;
+        }
+
+        /* ACCENT — Playfair Display italic serif */
+        .accent {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--purple);
         }
 
         /* ── Noise ── */
@@ -57,8 +65,8 @@
         }
         #main-nav .nav-links a { color: var(--text-muted); transition: color 0.25s; text-decoration: none; }
         #main-nav .nav-links a:hover { color: var(--text-dark); }
-        .nav-cta-btn { background: var(--purple); color: white; padding: 10px 22px; border-radius: 100px; font-weight: 600; font-size: 0.875rem; text-decoration: none; transition: background 0.25s, transform 0.2s; display: inline-block; }
-        .nav-cta-btn:hover { background: var(--purple-light); transform: translateY(-1px); }
+        .nav-cta-btn { background: #0f172a; color: white; padding: 10px 22px; border-radius: 100px; font-weight: 600; font-size: 0.875rem; text-decoration: none; transition: background 0.25s, transform 0.2s; display: inline-block; }
+        .nav-cta-btn:hover { background: var(--purple); transform: translateY(-1px); }
         .nav-dropdown { position: relative; display: flex; align-items: center; }
         .nav-dropdown > span { cursor: pointer; color: var(--text-muted); transition: color 0.25s; }
         .nav-dropdown:hover > span { color: var(--text-dark); }
@@ -141,7 +149,7 @@
             box-shadow: 0 2px 24px rgba(0,0,0,0.06);
         }
         .split-side { padding: 60px 48px; position: relative; }
-        .split-without { background: #F5F5F7; }
+        .split-without { background: #f8fafc; }
         .split-with {
             background: #ffffff;
             border-left: 3px solid var(--purple);
@@ -179,22 +187,22 @@
             max-width: 900px;
             margin: 0 auto 32px;
             padding: 48px;
-            border-radius: 20px;
+            border-radius: 24px;
             background: #ffffff;
-            border: 1px solid var(--border);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
             opacity: 0;
             transform: translateY(40px);
             transition: border-color 0.3s, box-shadow 0.3s;
         }
         .solution-card:hover {
             border-color: rgba(138, 43, 226, 0.2);
-            box-shadow: 0 8px 40px rgba(138,43,226,0.1);
+            box-shadow: 0 8px 30px rgba(138,43,226,0.08);
         }
         .solution-card-icon {
             width: 52px;
             height: 52px;
-            border-radius: 14px;
+            border-radius: 16px;
             background: var(--purple-dim);
             display: flex;
             align-items: center;
@@ -325,7 +333,7 @@
         .value-point-icon {
             width: 40px;
             height: 40px;
-            border-radius: 10px;
+            border-radius: 16px;
             background: var(--purple-dim);
             display: flex;
             align-items: center;
@@ -396,7 +404,7 @@
             margin-top: 56px;
         }
         .stat-item {
-            background: #F5F5F7;
+            background: #f8fafc;
             padding: 32px 28px;
             text-align: center;
             opacity: 0;
@@ -465,11 +473,11 @@
          SECTION 1 — HERO
          bg: #F5F5F7 (porcelain)
     ══════════════════════════════════ -->
-    <section class="sec" style="background:#F5F5F7; padding-top:140px; padding-bottom:96px; text-align:center;">
+    <section class="sec" style="background:#f8fafc; padding-top:140px; padding-bottom:96px; text-align:center;">
         <div class="sec-inner">
             <div class="hero-badge fade-up"><span>&#9670;</span> Studio Legale</div>
             <h1 class="hero-title fade-up" id="hero-title">
-                Ogni ora al telefono è un'ora<br>
+                Ogni <span class="accent">ora</span> al telefono è un'ora<br>
                 <span class="hl">sottratta ai suoi clienti.</span>
             </h1>
             <p class="hero-subtitle fade-up">
@@ -519,7 +527,7 @@
         <div class="sec-inner">
             <div style="text-align:center; margin-bottom:64px;">
                 <p class="sec-label fade-up">IL CONFRONTO</p>
-                <h2 class="sec-title fade-up" style="margin:0 auto;">La giornata dello studio: <span class="hl">senza e con Kairòs</span></h2>
+                <h2 class="sec-title fade-up" style="margin:0 auto;">La <span class="accent">giornata</span> dello studio: <span class="hl">senza e con Kairòs</span></h2>
             </div>
             <div class="split-container fade-up">
                 <div class="split-side split-without">
@@ -576,11 +584,11 @@
          SECTION 3 — SOLUZIONI
          bg: #F5F5F7 (porcelain)
     ══════════════════════════════════ -->
-    <section class="sec" style="background:#F5F5F7;">
+    <section class="sec" style="background:#f8fafc;">
         <div class="sec-inner">
             <div style="text-align:center; margin-bottom:64px;">
                 <p class="sec-label fade-up">LE FUNZIONALITÀ</p>
-                <h2 class="sec-title fade-up" style="margin:0 auto;">Quattro strumenti. <span class="hl">Un solo assistente.</span></h2>
+                <h2 class="sec-title fade-up" style="margin:0 auto;">Quattro <span class="accent">strumenti.</span> <span class="hl">Un solo assistente.</span></h2>
                 <p class="sec-sub fade-up" style="margin:12px auto 0;">Progettati per la specificità di uno studio legale. Configurati sul suo modo di lavorare.</p>
             </div>
 
@@ -654,7 +662,7 @@
         <div class="sec-inner">
             <div style="text-align:center; margin-bottom:60px;">
                 <p class="sec-label fade-up">IL SISTEMA IN AZIONE</p>
-                <h2 class="sec-title fade-up" style="margin:0 auto;">Dalla prima richiesta <span class="hl">all'appuntamento confermato.</span></h2>
+                <h2 class="sec-title fade-up" style="margin:0 auto;">Dalla prima <span class="accent">richiesta</span> <span class="hl">all'appuntamento confermato.</span></h2>
                 <p class="sec-sub fade-up" style="margin:12px auto 0;">Una conversazione reale: come l'assistente accoglie un cliente, raccoglie i documenti e fissa la consulenza.</p>
             </div>
 
@@ -756,7 +764,7 @@
          SECTION 5 — VALORE / ECOSISTEMA
          bg: #F5F5F7 (porcelain)
     ══════════════════════════════════ -->
-    <section class="sec" style="background:#F5F5F7;">
+    <section class="sec" style="background:#f8fafc;">
         <div class="sec-inner-narrow">
             <h2 class="value-title">Un ecosistema Legale <span class="accent">All-in-One.</span></h2>
 
@@ -817,7 +825,7 @@
     <section class="sec" style="background:#FFFFFF;">
         <div style="max-width:800px; margin:0 auto;">
             <p class="sec-label fade-up">Domande Frequenti</p>
-            <h2 class="sec-title fade-up">Domande comuni degli studi legali.</h2>
+            <h2 class="sec-title fade-up">Domande <span class="accent">comuni</span> degli studi legali.</h2>
             <p class="sec-sub fade-up" style="margin-bottom:48px;">Le risposte alle perplessità più frequenti di avvocati e professionisti del diritto.</p>
             <div class="sector-faq-list">
 

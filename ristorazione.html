@@ -9,20 +9,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     <!-- Iubenda Cookie Banner -->
     <script type="text/javascript" src="https://embeds.iubenda.com/widgets/97b32e17-7a35-4bcf-9c3e-7fa7f8205d84.js"></script>
 
     <style>
         :root {
-            --porcelain: #F5F5F7;
+            --porcelain: #f8fafc;
             --rich-black: #08080A;
             --purple: #8A2BE2;
             --purple-light: #9B40F0;
             --purple-dim: rgba(138, 43, 226, 0.10);
-            --text-dark: #1A1A1A;
-            --text-muted: #6B7280;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
             --border: rgba(0, 0, 0, 0.08);
         }
 
@@ -35,6 +35,14 @@
             overflow-x: hidden;
             margin: 0;
             -webkit-font-smoothing: antialiased;
+        }
+
+        /* ACCENT — Playfair Display italic serif */
+        .accent {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--purple);
         }
 
         /* ── Noise ── */
@@ -57,8 +65,8 @@
         }
         #main-nav .nav-links a { color: var(--text-muted); transition: color 0.25s; text-decoration: none; }
         #main-nav .nav-links a:hover { color: var(--text-dark); }
-        .nav-cta-btn { background: var(--purple); color: white; padding: 10px 22px; border-radius: 100px; font-weight: 600; font-size: 0.875rem; text-decoration: none; transition: background 0.25s, transform 0.2s; display: inline-block; }
-        .nav-cta-btn:hover { background: var(--purple-light); transform: translateY(-1px); }
+        .nav-cta-btn { background: #0f172a; color: white; padding: 10px 22px; border-radius: 100px; font-weight: 600; font-size: 0.875rem; text-decoration: none; transition: background 0.25s, transform 0.2s; display: inline-block; }
+        .nav-cta-btn:hover { background: var(--purple); transform: translateY(-1px); }
         .nav-dropdown { position: relative; display: flex; align-items: center; }
         .nav-dropdown > span { cursor: pointer; color: var(--text-muted); transition: color 0.25s; }
         .nav-dropdown:hover > span { color: var(--text-dark); }
@@ -179,17 +187,17 @@
             max-width: 900px;
             margin: 0 auto 32px;
             padding: 48px;
-            border-radius: 20px;
+            border-radius: 24px;
             background: #ffffff;
-            border: 1px solid var(--border);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
             opacity: 0;
             transform: translateY(40px);
             transition: border-color 0.3s, box-shadow 0.3s;
         }
         .solution-card:hover {
             border-color: rgba(138, 43, 226, 0.2);
-            box-shadow: 0 8px 40px rgba(138,43,226,0.1);
+            box-shadow: 0 8px 30px rgba(138,43,226,0.08);
         }
         .solution-card h3 {
             font-size: 1.5rem;
@@ -401,7 +409,7 @@
         <div class="sec-inner">
             <div class="hero-badge fade-up"><span>✦</span> Per Ristoranti, Pizzerie &amp; Bar</div>
             <h1 class="hero-title fade-up" id="hero-title">
-                Il telefono squilla proprio mentre la sala è piena. <span class="hl">Rispondi o servi i clienti al tavolo?</span>
+                Il telefono squilla proprio mentre la sala è <span class="accent">piena.</span> <span class="hl">Rispondi o servi i clienti al tavolo?</span>
             </h1>
             <p class="hero-subtitle fade-up">
                 Automatizza prenotazioni, menu e marketing al costo di
@@ -425,7 +433,7 @@
         <div class="sec-inner">
             <div style="text-align:center; margin-bottom:64px;">
                 <p class="sec-label fade-up">IL CONFRONTO</p>
-                <h2 class="sec-title fade-up" style="margin:0 auto;">Un sabato sera tipo: <span class="hl">senza e con Kairòs</span></h2>
+                <h2 class="sec-title fade-up" style="margin:0 auto;">Un sabato sera <span class="accent">tipo:</span> <span class="hl">senza e con Kairòs</span></h2>
             </div>
             <div class="split-container fade-up">
                 <div class="split-side split-without">
@@ -476,7 +484,7 @@
         <div class="sec-inner">
             <div style="text-align:center; margin-bottom:64px;">
                 <p class="sec-label fade-up">COME FUNZIONA</p>
-                <h2 class="sec-title fade-up" style="margin:0 auto;">Come funziona, <span class="hl">nel concreto.</span></h2>
+                <h2 class="sec-title fade-up" style="margin:0 auto;">Come <span class="accent">funziona,</span> <span class="hl">nel concreto.</span></h2>
                 <p class="sec-sub fade-up" style="margin:12px auto 0;">Tre strumenti che riempiono la tua sala e proteggono la tua reputazione.</p>
             </div>
 
@@ -517,7 +525,7 @@
         <div class="sec-inner">
             <div style="text-align:center; margin-bottom:60px;">
                 <p class="sec-label fade-up">REPORT AUTOMATICO</p>
-                <h2 class="sec-title fade-up" style="margin:0 auto;">Il tuo ristorante, <span class="hl">in un messaggio.</span></h2>
+                <h2 class="sec-title fade-up" style="margin:0 auto;">Il tuo <span class="accent">ristorante,</span> <span class="hl">in un messaggio.</span></h2>
                 <p class="sec-sub fade-up" style="margin:12px auto 0;">Report automatico. Ogni settimana. Senza fare nulla.</p>
             </div>
 
@@ -564,7 +572,7 @@
     ══════════════════════════════════ -->
     <section class="sec" style="background:#F5F5F7;">
         <div class="sec-inner-narrow">
-            <h2 class="value-title">Il tuo tavolo, <span class="accent">il tuo guadagno.</span></h2>
+            <h2 class="value-title">Il tuo tavolo, il tuo <span class="accent">guadagno.</span></h2>
             <p class="value-text">
                 Basta pagare commissioni per ogni coperto ai portali di prenotazione.
                 <strong>Con Kairòs paghi solo il servizio,</strong> indipendentemente da quanti clienti porti.
@@ -581,7 +589,7 @@
     <section class="sec" style="background:#FFFFFF;">
         <div style="max-width:800px; margin:0 auto;">
             <p class="sec-label fade-up">Domande Frequenti</p>
-            <h2 class="sec-title fade-up">Hai domande?</h2>
+            <h2 class="sec-title fade-up">Hai <span class="accent">domande?</span></h2>
             <p class="sec-sub fade-up" style="margin-bottom:48px;">Le risposte più comuni per ristoranti e attività food.</p>
             <div class="sector-faq-list">
                 <div class="sector-faq-item fade-up">
@@ -674,7 +682,9 @@
     // Hero word-by-word animation
     const heroTitle = document.getElementById('hero-title');
     const titleHtml = heroTitle.innerHTML;
-    heroTitle.innerHTML = titleHtml.replace(/<span class="hl">(.*?)<\/span>/g, (match, content) => {
+    heroTitle.innerHTML = titleHtml.replace(/<span class="accent">(.*?)<\/span>/g, (match, content) => {
+        return content.split(' ').map(w => `<span class="hero-word accent">${w}</span>`).join(' ');
+    }).replace(/<span class="hl">(.*?)<\/span>/g, (match, content) => {
         return content.split(' ').map(w => `<span class="hero-word hl">${w}</span>`).join(' ');
     }).replace(/(^|>)([^<]+)(<|$)/g, (match, before, text, after) => {
         if (text.trim() === '') return match;

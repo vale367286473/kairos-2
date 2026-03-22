@@ -11,17 +11,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script type="text/javascript" src="https://embeds.iubenda.com/widgets/97b32e17-7a35-4bcf-9c3e-7fa7f8205d84.js"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --porcelain: #F5F5F7;
+            --porcelain: #f8fafc;
             --rich-black: #08080A;
             --purple: #8A2BE2;
             --purple-light: #9B40F0;
             --purple-dim: rgba(138, 43, 226, 0.10);
-            --text-dark: #1A1A1A;
-            --text-muted: #6B7280;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
             --border: rgba(0, 0, 0, 0.08);
         }
 
@@ -75,6 +75,14 @@
             line-height: 1.65;
         }
 
+        /* ACCENT — Playfair Display italic serif */
+        .accent {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--purple);
+        }
+
         /* ═══ NAVBAR ═══ */
         #main-nav {
             background: rgba(255, 255, 255, 0.96);
@@ -94,7 +102,7 @@
         }
 
         .nav-cta-btn {
-            background: var(--purple);
+            background: #0f172a;
             color: white;
             padding: 10px 22px;
             border-radius: 100px;
@@ -106,7 +114,7 @@
         }
 
         .nav-cta-btn:hover {
-            background: var(--purple-light);
+            background: var(--purple);
             transform: translateY(-1px);
         }
 
@@ -377,23 +385,24 @@
             align-items: center;
             gap: 10px;
             padding: 24px 12px;
-            border-radius: 16px;
-            border: 1px solid rgba(0, 0, 0, 0.04);
+            border-radius: 24px;
+            border: 1px solid #f1f5f9;
             background: white;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
             transition: all 0.25s ease;
             cursor: default;
         }
 
         .app-card:hover {
-            border-color: rgba(138, 43, 226, 0.15);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+            border-color: rgba(138, 43, 226, 0.2);
+            box-shadow: 0 8px 30px rgba(138,43,226,0.08);
             transform: translateY(-2px);
         }
 
         .app-card img {
             width: 44px;
             height: 44px;
-            border-radius: 10px;
+            border-radius: 16px;
             object-fit: contain;
             background: #f9f9f9;
             padding: 4px;
@@ -469,7 +478,7 @@
     <!-- Page Header -->
     <div class="page-header">
         <div class="sec-label">INTEGRAZIONI</div>
-        <h1>Si integra con oltre <span>1.400</span> app.</h1>
+        <h1>Si <span class="accent">integra</span> con oltre <span>1.400</span> app.</h1>
         <p>Il tuo ecosistema Kairòs dialoga con i software che già usi. Cerca la tua app preferita e scopri quanto è semplice collegarla.</p>
 
         <div class="search-container">
@@ -504,7 +513,7 @@
 
     <!-- Bottom CTA -->
     <section style="background: linear-gradient(135deg, #1a0533 0%, #2d1059 100%); padding: 64px 24px; text-align: center; position: relative; z-index: 10; margin-top: 48px;">
-        <h3 style="color: white; font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em;">Non trovi la tua app?</h3>
+        <h3 style="color: white; font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em;">Non trovi la tua <span class="accent">app?</span></h3>
         <p style="color: rgba(255,255,255,0.65); font-size: 1rem; margin-bottom: 28px; font-weight: 300;">Tranquillo — possiamo collegarci a qualsiasi API. Scrivici e lo valutiamo insieme.</p>
         <a href="mailto:business@kairos-24.it" style="display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:white;padding:14px 32px;border-radius:100px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:background 0.25s;">Contattaci →</a>
     </section>
