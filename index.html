@@ -169,15 +169,7 @@
         }
         .btn-ghost:hover { border-color: var(--text-dark); color: var(--text-dark); transform: translateY(-2px); }
 
-        /* PROOF BAR */
-        .proof-bar { background: #fff; border-bottom: 1px solid var(--border); padding: 48px 24px; }
-        .proof-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); }
-        .proof-item { text-align: center; padding: 16px 24px; }
-        .proof-item:not(:last-child) { border-right: 1px solid var(--border); }
-        .proof-num { font-size: 2.8rem; font-weight: 900; color: var(--purple); line-height: 1; letter-spacing: -0.04em; margin-bottom: 8px; }
-        .proof-lbl { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); line-height: 1.4; text-transform: uppercase; letter-spacing: 0.06em; }
-
-        /* DATA CARDS */
+/* DATA CARDS */
         .data-section { background: #fff; padding: 96px 24px; }
         .data-grid {
             max-width: 1280px; margin: 0 auto;
@@ -362,6 +354,30 @@
         @media (min-width: 769px) and (max-width: 1024px) {
             .sectors-grid { grid-template-columns: repeat(2, 1fr); }
         }
+        /* Privacy checkbox visual feedback */
+        .privacy-wrap input[type="checkbox"]:checked + label {
+            color: #a78bfa;
+        }
+        .privacy-wrap input[type="checkbox"]:checked {
+            border-color: #a78bfa;
+            background: #a78bfa;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .privacy-error {
+            color: #f87171;
+            font-size: 0.8rem;
+            margin-top: 6px;
+            display: none;
+        }
+        .privacy-wrap.has-error input[type="checkbox"] {
+            border-color: #f87171;
+        }
+        .privacy-wrap.has-error .privacy-error {
+            display: block;
+        }
     </style>
 </head>
 
@@ -382,6 +398,7 @@
         </a>
         <div class="nav-links hidden md:flex gap-8 text-sm font-medium tracking-wide">
             <a href="chi-siamo.html">Chi siamo</a>
+            <a href="consulenza.html">Consulenza</a>
             <div class="nav-dropdown">
                 <span>Che attivita hai? &#9662;</span>
                 <div class="nav-dropdown-menu">
@@ -408,6 +425,7 @@
 
     <div class="mobile-menu" id="mobile-menu">
         <a href="chi-siamo.html">Chi siamo</a>
+        <a href="consulenza.html">Consulenza</a>
         <div style="padding-left:12px; display:flex; flex-direction:column; gap:2px;">
             <span style="padding:10px 16px 6px; color:#999; font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em;">Che attivita hai?</span>
             <a href="centro-estetico.html">Centro Estetico & Parrucchiere</a>
@@ -450,24 +468,6 @@
                 <a href="#servizi" class="btn-ghost">Scopri i servizi &#8595;</a>
             </div>
         </section>
-
-        <!-- ═══ PROOF BAR ═══ -->
-        <div class="proof-bar fade-up">
-            <div class="proof-inner">
-                <div class="proof-item">
-                    <div class="proof-num">24/7</div>
-                    <div class="proof-lbl">Attivo senza interruzioni</div>
-                </div>
-                <div class="proof-item">
-                    <div class="proof-num">0</div>
-                    <div class="proof-lbl">Chiamate e messaggi senza risposta</div>
-                </div>
-                <div class="proof-item">
-                    <div class="proof-num">7&nbsp;gg</div>
-                    <div class="proof-lbl">Dal contratto alla messa in live</div>
-                </div>
-            </div>
-        </div>
 
         <!-- ═══ I NUMERI CHE CONTANO ═══ -->
         <section class="data-section">
@@ -813,15 +813,16 @@
                             class="absolute text-xl text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-white peer-focus:scale-75 peer-focus:-translate-y-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:font-medium left-0">
                             Email o Telefono</label>
                     </div>
-                    <div class="flex items-start gap-4">
+                    <div class="flex items-start gap-4 privacy-wrap" id="privacy-wrap">
                         <input type="checkbox" id="privacy-consent" name="privacy-consent" required
                             class="mt-1 w-5 h-5 bg-transparent border-2 border-gray-600 rounded appearance-none focus:outline-none cursor-pointer"
                             style="flex-shrink:0">
-                        <label for="privacy-consent" class="text-sm text-gray-400 leading-tight cursor-pointer">
+                        <label for="privacy-consent" class="text-sm text-gray-400 leading-tight cursor-pointer transition-colors duration-200">
                             Ho letto e compreso la <a href="privacy-policy.html" target="_blank"
                                 class="underline" style="color:rgba(138,43,226,0.85)">Privacy Policy</a>,
                             e acconsento al trattamento dei miei dati personali per essere ricontattato.
                         </label>
+                        <div class="privacy-error" id="privacy-error">Accetta la privacy policy per continuare</div>
                     </div>
                     <button type="submit" id="submit-btn"
                         class="w-full text-white font-bold text-xl py-6 rounded-full mt-8 hover:scale-[1.02] transition-transform shadow-xl"
@@ -849,6 +850,7 @@
                     <div style="display:flex;flex-direction:column;gap:12px;">
                         <a href="index.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Home</a>
                         <a href="chi-siamo.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Chi siamo</a>
+                        <a href="consulenza.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Consulenza</a>
                         <a href="faq.html" style="color:#888;font-size:0.88rem;text-decoration:none;">FAQ</a>
                         <a href="integrazioni.html" style="color:#888;font-size:0.88rem;text-decoration:none;">Integrazioni</a>
                     </div>
@@ -945,8 +947,26 @@
         const submitBtn   = document.getElementById('submit-btn');
         const formMessage = document.getElementById('form-message');
 
+        const privacyCheckbox = document.getElementById('privacy-consent');
+        const privacyWrap = document.getElementById('privacy-wrap');
+        const privacyError = document.getElementById('privacy-error');
+
+        privacyCheckbox.addEventListener('change', () => {
+            if (privacyCheckbox.checked) {
+                privacyWrap.classList.remove('has-error');
+            }
+        });
+
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+
+            if (!privacyCheckbox.checked) {
+                privacyWrap.classList.add('has-error');
+                privacyCheckbox.focus();
+                return;
+            }
+            privacyWrap.classList.remove('has-error');
+
             submitBtn.disabled = true;
             submitBtn.textContent = 'Invio in corso...';
             try {

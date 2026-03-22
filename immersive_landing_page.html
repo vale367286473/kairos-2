@@ -572,6 +572,30 @@
         .kinetic-line {
             display: inline-block;
         }
+        /* Privacy checkbox visual feedback */
+        .privacy-wrap input[type="checkbox"]:checked + label {
+            color: #a78bfa;
+        }
+        .privacy-wrap input[type="checkbox"]:checked {
+            border-color: #a78bfa;
+            background: #a78bfa;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .privacy-error {
+            color: #f87171;
+            font-size: 0.8rem;
+            margin-top: 6px;
+            display: none;
+        }
+        .privacy-wrap.has-error input[type="checkbox"] {
+            border-color: #f87171;
+        }
+        .privacy-wrap.has-error .privacy-error {
+            display: block;
+        }
     </style>
 </head>
 
@@ -959,6 +983,17 @@
                             class="absolute text-xl text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:text-white peer-focus:scale-75 peer-focus:-translate-y-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:font-medium left-0">Email
                             o Telefono</label>
                     </div>
+                    <div class="flex items-start gap-4 privacy-wrap" id="privacy-wrap" style="display:flex;align-items:flex-start;gap:16px;">
+                        <input type="checkbox" id="privacy-consent" name="privacy-consent" required
+                            class="mt-1 w-5 h-5 bg-transparent border-2 border-gray-600 rounded appearance-none focus:outline-none cursor-pointer"
+                            style="flex-shrink:0">
+                        <label for="privacy-consent" class="text-sm text-gray-400 leading-tight cursor-pointer" style="font-size:0.875rem;color:#9ca3af;line-height:1.25;cursor:pointer;transition:color 0.2s;">
+                            Ho letto e compreso la <a href="privacy-policy.html" target="_blank"
+                                class="underline" style="color:rgba(138,43,226,0.85)">Privacy Policy</a>,
+                            e acconsento al trattamento dei miei dati personali per essere ricontattato.
+                        </label>
+                        <div class="privacy-error" id="privacy-error">Accetta la privacy policy per continuare</div>
+                    </div>
                     <button type="submit" id="submit-btn"
                         class="w-full bg-white text-black font-bold text-xl py-6 rounded-full mt-12 hover:scale-[1.02] transition-transform hoverable shadow-xl">
                         Prenota la tua Call Gratuita
@@ -1044,8 +1079,26 @@
         const submitBtn = document.getElementById('submit-btn');
         const formMessage = document.getElementById('form-message');
 
+        const privacyCheckbox = document.getElementById('privacy-consent');
+        const privacyWrap = document.getElementById('privacy-wrap');
+        const privacyError = document.getElementById('privacy-error');
+
+        privacyCheckbox.addEventListener('change', () => {
+            if (privacyCheckbox.checked) {
+                privacyWrap.classList.remove('has-error');
+            }
+        });
+
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+
+            if (!privacyCheckbox.checked) {
+                privacyWrap.classList.add('has-error');
+                privacyCheckbox.focus();
+                return;
+            }
+            privacyWrap.classList.remove('has-error');
+
             submitBtn.disabled = true;
             submitBtn.textContent = 'Invio in corso...';
 
